@@ -1,12 +1,8 @@
 package P1;
 
-public class FactoriaCarreraYBicicleta {
+public abstract class FactoriaCarreraYBicicleta {
 
-	public Carrera crearCarrera() {
-		throw new UnsupportedOperationException();
-	}
+	public abstract Carrera crearCarrera();
 
-	public Bicicleta crearBicicleta() {
-		throw new UnsupportedOperationException();
-	}
+	public abstract Bicicleta crearBicicleta();
 }

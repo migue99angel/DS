@@ -3,10 +3,10 @@ package P1;
 public class FactroriaCarretera extends FactoriaCarreraYBicicleta {
 
 	public Carrera crearCarrera() {
-		throw new UnsupportedOperationException();
+		return new CarreraCarretera();
 	}
 
 	public Bicicleta crearBicicleta() {
-		throw new UnsupportedOperationException();
+		return new BicicletaCarretera();
 	}
 }

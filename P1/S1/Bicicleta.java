@@ -1,9 +1,9 @@
 package P1;
 
-public class Bicicleta {
+public abstract class Bicicleta {
 	private int _id;
 
 	public int getID() {
-		throw new UnsupportedOperationException();
+		return this._id;
 	}
 }
