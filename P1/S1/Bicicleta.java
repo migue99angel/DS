@@ -4,6 +4,6 @@ public abstract class Bicicleta {
 	private int _id;
 
 	public int getID() {
-		return this._id;
+		throw new UnsupportedOperationException();
 	}
 }

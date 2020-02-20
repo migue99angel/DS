@@ -2,11 +2,11 @@ package P1;
 
 public class FactoriaMontana extends FactoriaCarreraYBicicleta {
 
-	public Carrera crearCarrera() {
-		return new CarreraMontana();
+	public CarreraMontana crearCarrera() {
+		throw new UnsupportedOperationException();
 	}
 
-	public Bicicleta crearBicicleta() {
-		return new BicicletaMontana();
+	public BicicletaMontana crearBicicleta() {
+		throw new UnsupportedOperationException();
 	}
 }

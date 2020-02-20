@@ -4,17 +4,11 @@ import java.util.ArrayList;
 import P1.Bicicleta;
 
 public abstract class Carrera {
-	public ArrayList<Bicicleta> participantes = new ArrayList<Bicicleta>();
+	public ArrayList<Bicicleta> _unnamed_Bicicleta_ = new ArrayList<Bicicleta>();
 
-	public ArrayList<Bicicletas> getBicicletas() {
-		return this.participantes;
-	}
+	public abstract void setBiciletas(ArrayList<Bicicleta> aBicicletas);
 
-	public void setBiciletas(ArrayList<Bicicleta> bicicletas) {
-		this.participantes = bicicletas;
-	}
+	public abstract ArrayList<Bicicleta> getBicicletas();
 
-	public void addBicicleta(Bicicleta bicicleta) {
-		this.participantes.add(bicicleta);
-	}
+	public abstract void addBicicleta(Bicicleta aBicicleta);
 }
