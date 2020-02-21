@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 
 public abstract class Carrera extends Thread{
-        public static String tipo;
 	public ArrayList<Bicicleta> participantes = new ArrayList<>();
         public static int N = -1;
         private final int numEdicion;
@@ -12,7 +11,7 @@ public abstract class Carrera extends Thread{
         {
             super(msg);
             numEdicion = i;
-            tipo = "";
+            participantes.clear();
         }
 	public void setBiciletas(ArrayList<Bicicleta> bicicletas)
         {
@@ -33,12 +32,12 @@ public abstract class Carrera extends Thread{
         
         public void getRanking()
         {
-            System.out.println("Final de la carrera de "+this.tipo + " ! Han participado "+N+" ciclistas. ");
+            System.out.println("Final de la carrera de "+this.getName() + " ! Han acabado "+participantes.size()+" ciclistas. ");
             System.out.println("La clasificación ha sido la siguiente: ");
             for(int i = 0; i < participantes.size(); i++ )
             {
-                int puesto = ++i;
-                System.out.println("Carrera numero: "+numEdicion+". Puesto "+ puesto + ". Bicicleta con número "+participantes.get(i).getID());
+                int puesto = i;
+                System.out.println("Carrera numero: "+numEdicion+". Puesto "+ ++puesto + ". Bicicleta con número "+participantes.get(i).getID());
             }
         }
 }

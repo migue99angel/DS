@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-public class Cliente {
+public class Cliente{
 	public Bicicleta bici;
         private static final Scanner in =new Scanner (System.in);
 	public static ArrayList<Carrera> listaCarreras = new ArrayList<>();
@@ -20,6 +20,7 @@ public class Cliente {
                 Random rand = new Random();
                 int obtenido = rand.nextInt(10) + 10;
                 Carrera.N = obtenido;
+                System.out.println("¡¡Se han inscrito un total de "+obtenido+" participantes a cada carrera !!");
             }
         }
         
@@ -28,7 +29,7 @@ public class Cliente {
             generarNumeroParticipantes();
             factoria = new FactoriaMontana();
             //Creo la carrera de montaña a la que le asigno la edición 1
-            Cliente.listaCarreras.add(factoria.crearCarrera(1));
+            Cliente.listaCarreras.add(factoria.crearCarrera(0));
             for(int i = 0; i < Carrera.N; i++)
             {
                 Cliente.listaCarreras.get(0).participantes.add(factoria.crearBicicleta(i));
@@ -36,7 +37,7 @@ public class Cliente {
             //Genero la carrera de carretera
             factoria = new FactroriaCarretera();
             //Creo la carrera de carretera a la que le asigno la edición 2
-            Cliente.listaCarreras.add(factoria.crearCarrera(2));
+            Cliente.listaCarreras.add(factoria.crearCarrera(1));
             for(int i = 0; i < Carrera.N; i++)
             {
                 Cliente.listaCarreras.get(1).participantes.add(factoria.crearBicicleta(100+i));
@@ -48,35 +49,19 @@ public class Cliente {
             generar();
             ((Thread)Cliente.listaCarreras.get(0)).start();
             ((Thread)Cliente.listaCarreras.get(1)).start();
+         try {
+            //Ponemos a "Dormir" el programa durante los ms que queremos
+            Thread.sleep(100);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
         }
 
 	public static void main(String[] args) {
-		boolean ejecucion = true;
-                int opcion = 0;
-                while(ejecucion)
-                {
-                    switch(opcion)
-                    {
-                        case 0:
-                            System.out.println("1. Lanzar 2 carreras simultáneamente  ");
-                            System.out.print("¿Qué quieres hacer?: ");
-                            opcion = in.nextInt();
-                            System.out.println();
-                        break;
-                        case 1:
-                            
-                        break;
-                        case 3:
-                            generar();
-                            if(Cliente.listaCarreras.size() != 2)
-                            {
-                                System.out.println("Se deben lanzar exactamente 2 carreras");
-                                ejecucion = false;
-                            }else
-                            {
-                                simular();  
-                            }
-                    }
-                }
-	}
+            simular();
+            System.out.println("Resultado primera carrera");
+            Cliente.listaCarreras.get(0).getRanking();
+            System.out.println("Resultado de la segunda carrera");
+            Cliente.listaCarreras.get(1).getRanking();
+        }
 }

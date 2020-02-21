@@ -1,6 +1,6 @@
 package factoriaabstracta;
 
-import static factoriaabstracta.Carrera.N;
+
 import java.util.Collections;
 import java.util.Random;
 
@@ -9,7 +9,6 @@ public class CarreraMontana extends Carrera {
     CarreraMontana(int i)
     {
         super(i,"Carrera de montana");
-        tipo = "Montaña";
     }
     @Override
     public void run() 
@@ -18,16 +17,17 @@ public class CarreraMontana extends Carrera {
         //Desordeno los participantes
         Collections.shuffle(this.participantes);
         //Calculo el 10% de los participantes
-        int abandonos = (int)(participantes.size() * 0.1);
+        int abandonos = (int)(participantes.size() * 0.2);
         Random rand = new Random();
-        //Elimino aleatoriamente al 10% de los participantes
-        for(int i = 0; i<abandonos; i++)
+        //Elimino aleatoriamente al 20% de los participantes
+        System.out.println("EN LA CARRERA DE MONTAÑA SE ELIMINAN "+abandonos+ " CICICLISTAS ");
+        for(int i = 0; i < abandonos; i++)
         {
             int obtenido = rand.nextInt(participantes.size());
+            System.out.println("SE ELIMINA EL PARTICIPANTE NUMERO "+ participantes.get(obtenido).getID() +" EN LA CARRERA DE MONTAÑA");
             participantes.remove(obtenido);
         }
         
-        this.getRanking();
     }
 
 
