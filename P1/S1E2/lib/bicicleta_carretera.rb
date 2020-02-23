@@ -1,4 +1,4 @@
-module Prototype
+module PrototipoRuby
   class BicicletaCarretera < Bicicleta
 
     public

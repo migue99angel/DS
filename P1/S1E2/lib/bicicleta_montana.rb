@@ -1,4 +1,4 @@
-module Prototype
+module PrototipoRuby
   class BicicletaMontana < Bicicleta
     def initialize(id)
       super(id)

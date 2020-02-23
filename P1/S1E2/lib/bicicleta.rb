@@ -1,5 +1,6 @@
-module Prototype
+module PrototipoRuby
   class Bicicleta
+    include Prototype
 
     private
     def initialize(id)

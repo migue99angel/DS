@@ -1,3 +1,3 @@
-module Prototype
+module PrototipoRuby
   
 end

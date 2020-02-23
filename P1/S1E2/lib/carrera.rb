@@ -1,5 +1,7 @@
-module Prototype
+module PrototipoRuby
   class Carrera
+    include Prototype
+    
     private
     def initialize(bicicletas)
       @bicicletas = bicicletas

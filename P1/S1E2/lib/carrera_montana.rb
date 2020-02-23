@@ -1,4 +1,4 @@
-module Prototype
+module PrototipoRuby
   class CarreraMontana < Carrera
 
     public
