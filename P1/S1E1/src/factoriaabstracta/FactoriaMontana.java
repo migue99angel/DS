@@ -1,6 +1,6 @@
 package factoriaabstracta;
 
-public class FactoriaMontana extends FactoriaCarreraYBicicleta {
+public class FactoriaMontana implements FactoriaCarreraYBicicleta {
 
         @Override
 	public CarreraMontana crearCarrera(int i) 

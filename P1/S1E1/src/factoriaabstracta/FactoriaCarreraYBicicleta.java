@@ -1,6 +1,6 @@
 package factoriaabstracta;
 
-public abstract class FactoriaCarreraYBicicleta {
+public interface FactoriaCarreraYBicicleta {
 
 	public abstract Carrera crearCarrera(int i);
 

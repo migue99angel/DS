@@ -27,7 +27,6 @@ public class CarreraMontana extends Carrera {
             System.out.println("SE ELIMINA EL PARTICIPANTE NUMERO "+ participantes.get(obtenido).getID() +" EN LA CARRERA DE MONTAÑA");
             participantes.remove(obtenido);
         }
-        
     }
 
 
