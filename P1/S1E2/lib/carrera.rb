@@ -14,7 +14,8 @@ module PrototipoRuby
     end
       
     private
-    def initialize()
+    def initialize(id)
+      @id = id
       @bicicletas = Array.new
     end
 

@@ -2,9 +2,9 @@ module PrototipoRuby
   class CarreraCarretera < Carrera
 
     public
-    def initialize(bicicletas)
-      super(bicicletas)
-      @bicicletas = bicicletas
+    def initialize(id)
+      super(id)
+      @bicicletas = Array.new
     end
 
     def clonar
@@ -12,7 +12,7 @@ module PrototipoRuby
     end
 
     def addBicicleta(bicicleta)
-      @bicicletas.add(bicicleta)
+      @bicicletas << bicicleta
     end
 
     attr_accessor :bicicletas

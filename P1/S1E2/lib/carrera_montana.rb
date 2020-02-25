@@ -2,9 +2,9 @@ module PrototipoRuby
   class CarreraMontana < Carrera
 
     public
-    def initialize(bicicletas)
-      super()
-      @bicicletas = bicicletas
+    def initialize(id)
+      super(id)
+      @bicicletas = Array.new
     end
 
     def clonar
