@@ -2,9 +2,9 @@ module PrototipoRuby
   class BicicletaCarretera < Bicicleta
 
     public
-    def initialize(id)
-      super(id)
-      @id = id
+    def initialize(dorsal)
+      super(dorsal)
+      @dorsal = dorsal
     end
 
     def clonar

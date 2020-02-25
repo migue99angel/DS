@@ -1,10 +1,21 @@
 module PrototipoRuby
   class Carrera
-    include Prototype
+
+    @@participantes = 0
     
+    attr_accessor :bicicletas
+    
+    def self.setParticipantes(participantes)
+      @@participantes = participantes
+    end
+    
+    def self.getParticipantes
+      @@participantes
+    end
+      
     private
-    def initialize(bicicletas)
-      @bicicletas = bicicletas
+    def initialize()
+      @bicicletas = Array.new
     end
 
     def clonar
@@ -12,9 +23,7 @@ module PrototipoRuby
     end
 
     def addBicicleta(bicicleta)
-      @bicicletas.add(bicicleta)
+      @bicicletas << bicicleta
     end
-
-    attr_accessor :bicicletas
   end
 end

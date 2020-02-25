@@ -1,6 +1,8 @@
+require './carrera_montana.rb'
+require './bicicleta_montana.rb'
+
 module PrototipoRuby
   class FactoriaMontana
-    include FactoriaCarreraYBicicleta
     
     def crearCarrera(id)
       return CarreraMontana.new(id)

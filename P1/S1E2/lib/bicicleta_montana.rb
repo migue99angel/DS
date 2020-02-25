@@ -1,14 +1,16 @@
 module PrototipoRuby
   class BicicletaMontana < Bicicleta
-    def initialize(id)
-      super(id)
-      @id = id
+    
+    public
+    def initialize(dorsal)
+      super(dorsal)
+      @dorsal = dorsal
     end
 
     def clonar
       return self
     end
 
-    attr_accessor :id
+    attr_accessor :dorsal
   end
 end

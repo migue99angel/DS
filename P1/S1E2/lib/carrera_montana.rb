@@ -3,7 +3,7 @@ module PrototipoRuby
 
     public
     def initialize(bicicletas)
-      super(bicicletas)
+      super()
       @bicicletas = bicicletas
     end
 
@@ -12,7 +12,7 @@ module PrototipoRuby
     end
 
     def addBicicleta(bicicleta)
-      @bicicletas.add(bicicleta)
+      @bicicletas << bicicleta
     end
 
     attr_accessor :bicicletas

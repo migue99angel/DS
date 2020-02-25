@@ -1,16 +1,17 @@
 module PrototipoRuby
   class Bicicleta
-    include Prototype
-
+    
+    @dorsal = nil
+    attr_accessor :dorsal
+    
     private
-    def initialize(id)
-      @id = id
+    def initialize(dorsal)
+      @dorsal = dorsal
     end
 
     def clonar
       return self
     end
 
-    attr_accessor :id
   end
 end
