@@ -26,8 +26,6 @@ public class CarreraCarretera extends Carrera {
             System.out.println("SE ELIMINA EL PARTICIPANTE NUMERO "+ participantes.get(obtenido).getID() +" EN LA CARRERA DE CARRETERA");
             participantes.remove(obtenido);
         }
-        
-        
     }
 
 

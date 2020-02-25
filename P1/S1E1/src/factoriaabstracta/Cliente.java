@@ -27,7 +27,7 @@ public class Cliente{
         public static void generar()
         {
             generarNumeroParticipantes();
-            factoria = new FactoriaMontana();
+            factoria = (FactoriaCarreraYBicicleta) new FactoriaMontana();
             //Creo la carrera de montaña a la que le asigno la edición 1
             Cliente.listaCarreras.add(factoria.crearCarrera(0));
             for(int i = 0; i < Carrera.N; i++)
@@ -35,7 +35,7 @@ public class Cliente{
                 Cliente.listaCarreras.get(0).participantes.add(factoria.crearBicicleta(i));
             }
             //Genero la carrera de carretera
-            factoria = new FactroriaCarretera();
+            factoria = (FactoriaCarreraYBicicleta) new FactroriaCarretera();
             //Creo la carrera de carretera a la que le asigno la edición 2
             Cliente.listaCarreras.add(factoria.crearCarrera(1));
             for(int i = 0; i < Carrera.N; i++)
@@ -51,7 +51,7 @@ public class Cliente{
             ((Thread)Cliente.listaCarreras.get(1)).start();
          try {
             //Ponemos a "Dormir" el programa durante los ms que queremos
-            Thread.sleep(100);
+            Thread.sleep(6*1000);
          } catch (Exception e) {
             System.out.println(e);
          }
