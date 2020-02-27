@@ -8,7 +8,7 @@ module PrototipoRuby
     end
 
     def clonar
-      return self
+      return CarreraCarretera.new(@id)
     end
 
     def addBicicleta(bicicleta)

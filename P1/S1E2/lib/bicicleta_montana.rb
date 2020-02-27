@@ -8,7 +8,7 @@ module PrototipoRuby
     end
 
     def clonar
-      return self
+      return BicicletaMontana.new(@dorsal)
     end
 
     attr_accessor :dorsal

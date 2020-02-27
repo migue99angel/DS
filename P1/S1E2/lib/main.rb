@@ -26,8 +26,8 @@ module PrototipoRuby
       for i in 0..@participantes do
         # Clonamos la bicicleta, la añadimos al array de bicicletas de la carrera y actualizamos el dorsal
         bici = @bicicleta.clonar
-        bici.dorsal = bici.dorsal+1
         @@carreras[0].addBicicleta(bici)
+        @@carreras[0].bicicletas[i].dorsal = i+1
       end
       
       # Creamos la factoría, la bicicleta que vamos a clonar y la carrera
@@ -39,7 +39,7 @@ module PrototipoRuby
         # Clonamos la bicicleta, la añadimos al array de bicicletas de la carrera y actualizamos el dorsal
         bici = @bicicleta.clonar
         @@carreras[1].addBicicleta(bici)
-        @@carreras[1].bicicletas[j].dorsal = @@carreras[1].bicicletas[0].dorsal+j
+        @@carreras[1].bicicletas[j].dorsal = j+1
       end
       
       # Retiramos de cada carrera las bicicletas correspondientes
@@ -70,21 +70,21 @@ module PrototipoRuby
       puts "Retirados #{retirar_carretera} participantes de la Carrera 1"
       
       # Cambiamos de manera aleatoria los participantes de cada carrera para obtener el resultado final
-      @@carreras[0].bicicletas.shuffle
-      @@carreras[1].bicicletas.shuffle
+      @@carreras[0].bicicletas = @@carreras[0].bicicletas.shuffle
+      @@carreras[1].bicicletas = @@carreras[1].bicicletas.shuffle
       
       # Imprimimos los resultados
       puts "Resultados de la Carrera 0"
-      contador = 0
+      contador = 1
       for iii in @@carreras[0].bicicletas do
-        puts "  Puesto #{contador+1}. Dorsal #{iii.dorsal}"
+        puts "  Puesto #{contador}. Dorsal #{iii.dorsal}"
         contador = contador+1
       end
       
       puts "Resultados de la Carrera 1"
-      contador = 0
+      contador = 1
       for jjj in @@carreras[1].bicicletas do
-        puts "  Puesto #{contador+1}. Dorsal #{jjj.dorsal}"
+        puts "  Puesto #{contador}. Dorsal #{jjj.dorsal}"
         contador = contador+1
       end
     end

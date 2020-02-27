@@ -20,7 +20,7 @@ module PrototipoRuby
     end
 
     def clonar
-      return self
+      return Carrera.new(@id)
     end
 
     def addBicicleta(bicicleta)

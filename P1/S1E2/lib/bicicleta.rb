@@ -10,7 +10,7 @@ module PrototipoRuby
     end
 
     def clonar
-      return self
+      return Bicicleta.new(@dorsal)
     end
 
   end
