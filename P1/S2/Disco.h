@@ -12,7 +12,7 @@
 class Disco {
 public:
     Disco();
-    void aceptar();
+    void aceptar(Visitante V);
 private:
 
 };

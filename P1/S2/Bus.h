@@ -17,7 +17,7 @@
 class Bus: public ComponenteEquipo {
 public:
     Bus();
-    void aceptar();
+    void aceptar(Visitante V);
 private:
 
 };

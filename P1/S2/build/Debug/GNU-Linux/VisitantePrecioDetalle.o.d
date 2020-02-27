@@ -1,15 +1,15 @@
 build/Debug/GNU-Linux/VisitantePrecioDetalle.o: \
- VisitantePrecioDetalle.cpp VisitantePrecioDetalle.h Visitante.h Bus.h \
- ComponenteEquipo.h Tarjeta.h Disco.h
+ VisitantePrecioDetalle.cpp VisitantePrecioDetalle.h Visitante.h Disco.h \
+ ComponenteEquipo.h Tarjeta.h Bus.h
 
 VisitantePrecioDetalle.h:
 
 Visitante.h:
 
-Bus.h:
+Disco.h:
 
 ComponenteEquipo.h:
 
 Tarjeta.h:
 
-Disco.h:
+Bus.h:

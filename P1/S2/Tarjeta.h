@@ -18,7 +18,7 @@
 class Tarjeta : public ComponenteEquipo {
 public:
     Tarjeta();
-    void aceptar();
+    void aceptar(Visitante V);
 private:
 
 };

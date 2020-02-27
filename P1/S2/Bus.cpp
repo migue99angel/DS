@@ -6,7 +6,7 @@
  */
 
 #include "Bus.h"
-
+#include "Visitante.h"
 Bus::Bus() {}
 
-void Bus::aceptar(){}
+void Bus::aceptar(Visitante V){}

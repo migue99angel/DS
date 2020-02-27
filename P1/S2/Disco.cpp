@@ -12,8 +12,8 @@
  */
 
 #include "Disco.h"
-
+#include "Visitante.h"
 Disco::Disco() {}
 
-void Disco::aceptar(){}
+void Disco::aceptar(Visitante V){}
 

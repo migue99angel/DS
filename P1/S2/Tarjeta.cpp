@@ -12,7 +12,8 @@
  */
 
 #include "Tarjeta.h"
+#include "Visitante.h"
 
 Tarjeta::Tarjeta() {}
 
-void Tarjeta::aceptar(){}
+void Tarjeta::aceptar(Visitante V){}

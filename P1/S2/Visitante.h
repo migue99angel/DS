@@ -5,13 +5,15 @@
  *
  * Created on 27 de febrero de 2020, 10:44
  */
+#include "Disco.h"
+#include "Tarjeta.h"
+#include "Bus.h"
+
+
 
 #ifndef VISITANTE_H
 #define VISITANTE_H
 
-#include "Bus.h"
-#include "Tarjeta.h"
-#include "Disco.h"
 class Visitante {
 public:
     Visitante();

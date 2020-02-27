@@ -15,5 +15,6 @@ using namespace std;
 int main(int argc, char** argv)
 {
     vector<Ordenador> listaEquipos;
+    cout<<"Hola mundo"<<endl;
 }
 

@@ -6,8 +6,9 @@
  */
 
 #include "ComponenteEquipo.h"
+#include "Visitante.h"
 
 ComponenteEquipo::ComponenteEquipo(){}
 
-void ComponenteEquipo::aceptar(){}
+void ComponenteEquipo::aceptar(Visitante V){}
 
