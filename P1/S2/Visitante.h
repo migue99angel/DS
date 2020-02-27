@@ -8,6 +8,7 @@
 
 #ifndef VISITANTE_H
 #define VISITANTE_H
+
 #include "Bus.h"
 #include "Tarjeta.h"
 #include "Disco.h"

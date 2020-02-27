@@ -9,14 +9,13 @@
 
 #ifndef COMPONENTEEQUIPO_H
 #define COMPONENTEEQUIPO_H
-#ifndef VISITANTE_H
-    #include "Visitante.h"
-#endif
+
 
 class ComponenteEquipo {
 public:
+    
     ComponenteEquipo();
-    void aceptar(Visitante V);
+    void aceptar();
 private:
 
 };
