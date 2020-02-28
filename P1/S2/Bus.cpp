@@ -7,6 +7,23 @@
 
 #include "Bus.h"
 #include "Visitante.h"
-Bus::Bus() {}
+#include "VisitantePrecio.h"
+#include "VisitantePrecioDetalle.h"
 
-void Bus::aceptar(Visitante V){}
+Bus::Bus(){}
+
+Bus::Bus(float p, std::string desc)
+{
+    this->precio = p;
+    this->descripcion = desc;
+}
+
+void Bus::aceptar(VisitantePrecio& V)
+{
+    V.visitarBus(this);
+}
+
+void Bus::aceptar(VisitantePrecioDetalle& V)
+{
+    V.visitarBus(this);
+}

@@ -7,10 +7,23 @@
 
 #include "VisitantePrecio.h"
 
-VisitantePrecio::VisitantePrecio() {}
+VisitantePrecio::VisitantePrecio()
+{
+    this->limpiar();
+}
 
-void VisitantePrecio::visitarBus(Bus b){}
+void VisitantePrecio::visitarBus(Bus* b)
+{
+    this->coste += b->getPrecio();
+}
 
-void VisitantePrecio::visitarDisco(Disco d) {}
+void VisitantePrecio::visitarDisco(Disco* d)
+{
+    this->coste += d->getPrecio();
+}
 
-void VisitantePrecio::visitarTarjeta(Tarjeta t) {}
+void VisitantePrecio::visitarTarjeta(Tarjeta* t)
+{
+    this->coste += t->getPrecio();
+}
+

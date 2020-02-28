@@ -17,7 +17,9 @@
 class Bus: public ComponenteEquipo {
 public:
     Bus();
-    void aceptar(Visitante V);
+    Bus(float p, std::string desc);
+    void aceptar(VisitantePrecio& V);
+    void aceptar(VisitantePrecioDetalle& V);
 private:
 
 };

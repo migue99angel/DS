@@ -9,10 +9,12 @@
 #ifndef DISCO_H
 #define DISCO_H
 #include "ComponenteEquipo.h"
-class Disco {
+class Disco : public ComponenteEquipo{
 public:
     Disco();
-    void aceptar(Visitante V);
+    Disco(float p, std::string desc);
+    void aceptar(VisitantePrecio& V);
+    void aceptar(VisitantePrecioDetalle& V);
 private:
 
 };

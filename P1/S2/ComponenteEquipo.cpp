@@ -10,5 +10,11 @@
 
 ComponenteEquipo::ComponenteEquipo(){}
 
-void ComponenteEquipo::aceptar(Visitante V){}
+ComponenteEquipo::ComponenteEquipo(float p, std::string desc)
+{
+    this->precio = p;
+    this->descripcion = desc;
+}
+
+void ComponenteEquipo::aceptar(Visitante& V){}
 

@@ -8,6 +8,7 @@
 #include "Disco.h"
 #include "Tarjeta.h"
 #include "Bus.h"
+#include "Ordenador.h"
 
 
 
@@ -17,9 +18,9 @@
 class Visitante {
 public:
     Visitante();
-    void visitarDisco(Disco d);
-    void visitarTarjeta(Tarjeta t);
-    void visitarBus(Bus b);
+    void visitarDisco(Disco* d);
+    void visitarTarjeta(Tarjeta* t);
+    void visitarBus(Bus* b);
 private:
 
 };

@@ -17,11 +17,14 @@
 class VisitantePrecio : public Visitante {
 public:
     VisitantePrecio();
-    void visitarDisco(Disco d);
-    void visitarTarjeta(Tarjeta t);
-    void visitarBus(Bus b);
+    void visitarDisco(Disco* d);
+    void visitarTarjeta(Tarjeta* t);
+    void visitarBus(Bus* b);
+    inline int getCoste(){return coste;}
+    inline void limpiar(){this->coste = 0;}
 private:
-
+    float coste;
+        
 };
 
 #endif /* VISITANTEPRECIO_H */

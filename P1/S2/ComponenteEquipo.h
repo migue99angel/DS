@@ -7,13 +7,23 @@
 
 #ifndef COMPONENTEEQUIPO_H
 #define COMPONENTEEQUIPO_H
+
+#include <string>
+
+
 class Visitante;
+class VisitantePrecio;
+class VisitantePrecioDetalle;
 class ComponenteEquipo {
 public:
     ComponenteEquipo();
-    void aceptar(Visitante V);
-private:
-
+    ComponenteEquipo(float p , std::string desc );
+    void aceptar(Visitante& V);
+    inline int getPrecio(){return precio;}
+    inline std::string getDescripcion(){return descripcion;}
+protected:
+    float precio;
+    std::string descripcion;
 };
 
 #endif /* COMPONENTEEQUIPO_H */

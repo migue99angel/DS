@@ -11,10 +11,15 @@
 class VisitantePrecioDetalle {
 public:
     VisitantePrecioDetalle();
-    void visitarDisco(Disco d);
-    void visitarTarjeta(Tarjeta t);
-    void visitarBus(Bus b);
+    void visitarDisco(Disco* d);
+    void visitarTarjeta(Tarjeta* t);
+    void visitarBus(Bus* b);
+    void limpiar();
+    void resultado();
 private:
+    pair<int,std::string> disco;
+    pair<int,std::string> tarjeta;
+    pair<int,std::string> bus;
 
 };
 

@@ -13,7 +13,23 @@
 
 #include "Tarjeta.h"
 #include "Visitante.h"
+#include "VisitantePrecio.h"
+#include "VisitantePrecioDetalle.h"
 
-Tarjeta::Tarjeta() {}
+Tarjeta::Tarjeta(){}
 
-void Tarjeta::aceptar(Visitante V){}
+Tarjeta::Tarjeta(float p, std::string desc)
+{
+    this->precio = p;
+    this->descripcion = desc;
+}
+
+void Tarjeta::aceptar(VisitantePrecio& V)
+{
+    V.visitarTarjeta(this);
+}
+
+void Tarjeta::aceptar(VisitantePrecioDetalle& V)
+{
+    V.visitarTarjeta(this);
+}

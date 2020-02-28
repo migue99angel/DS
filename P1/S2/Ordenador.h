@@ -13,14 +13,24 @@
 
 #ifndef ORDENADOR_H
 #define ORDENADOR_H
-#include "ComponenteEquipo.h"
-#include <vector>
+#include "Disco.h"
+#include "Bus.h"
+#include "Tarjeta.h"
 using namespace std;
 class Ordenador {
 public:
-    Ordenador();
+    Ordenador(float pDisco, float pTarjeta, float pBus, std::string dDisco, std::string dTarjeta, std::string dBus);
+    void aceptar(VisitantePrecio& V);
+    void aceptar(VisitantePrecioDetalle& V);
+    inline Tarjeta* getTarjeta(){return this->t;}
+    inline Disco* getDisco(){return this->d;}
+    inline Bus* getBus(){return  this->b;}
+    void mostrar();
 private:
-    vector<ComponenteEquipo> equipo;
+    Disco* d;
+    Tarjeta* t;
+    Bus* b;
+
 };
 
 #endif /* ORDENADOR_H */

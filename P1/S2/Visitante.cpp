@@ -16,8 +16,8 @@
 
 Visitante::Visitante() {}
 
-void Visitante::visitarDisco(Disco d){}
+/*void Visitante::visitarDisco(Disco* d){}
 
-void Visitante::visitarTarjeta(Tarjeta t){}
+void Visitante::visitarTarjeta(Tarjeta* t){}
 
-void Visitante::visitarBus(Bus b){}
+void Visitante::visitarBus(Bus* b){}*/

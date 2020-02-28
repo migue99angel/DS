@@ -18,7 +18,9 @@
 class Tarjeta : public ComponenteEquipo {
 public:
     Tarjeta();
-    void aceptar(Visitante V);
+    Tarjeta(float p, std::string desc);
+    void aceptar(VisitantePrecio& V);
+    void aceptar(VisitantePrecioDetalle& V);
 private:
 
 };

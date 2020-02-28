@@ -13,7 +13,25 @@
 
 #include "Disco.h"
 #include "Visitante.h"
-Disco::Disco() {}
+#include "VisitantePrecio.h"
+#include "VisitantePrecioDetalle.h"
 
-void Disco::aceptar(Visitante V){}
+Disco::Disco(){}
+
+Disco::Disco(float p, std::string desc)
+{
+    this->precio = p;
+    this->descripcion = desc;
+}
+
+void Disco::aceptar(VisitantePrecio& V)
+{
+    V.visitarDisco(this);
+}
+
+void Disco::aceptar(VisitantePrecioDetalle& V)
+{
+    V.visitarDisco(this);
+}
+
 
