@@ -1,7 +1,8 @@
 
 /* 
  * File:   Disco.h
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  *
  * Created on 27 de febrero de 2020, 10:35
  */
@@ -13,8 +14,7 @@ class Disco : public ComponenteEquipo{
 public:
     Disco();
     Disco(float p, std::string desc);
-    void aceptar(VisitantePrecio& V);
-    void aceptar(VisitantePrecioDetalle& V);
+    void aceptar(Visitante& V);
 private:
 
 };

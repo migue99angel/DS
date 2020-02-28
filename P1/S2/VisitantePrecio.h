@@ -6,7 +6,8 @@
 
 /* 
  * File:   VisitantePrecio.h
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  *
  * Created on 27 de febrero de 2020, 10:47
  */

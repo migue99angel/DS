@@ -6,7 +6,8 @@
 
 /* 
  * File:   Bus.h
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  *
  * Created on 27 de febrero de 2020, 10:31
  */
@@ -18,8 +19,7 @@ class Bus: public ComponenteEquipo {
 public:
     Bus();
     Bus(float p, std::string desc);
-    void aceptar(VisitantePrecio& V);
-    void aceptar(VisitantePrecioDetalle& V);
+    void aceptar(Visitante& V);
 private:
 
 };

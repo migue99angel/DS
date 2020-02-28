@@ -6,7 +6,8 @@
 
 /* 
  * File:   Disco.cpp
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  * 
  * Created on 27 de febrero de 2020, 10:35
  */
@@ -24,14 +25,8 @@ Disco::Disco(float p, std::string desc)
     this->descripcion = desc;
 }
 
-void Disco::aceptar(VisitantePrecio& V)
+void Disco::aceptar(Visitante& V)
 {
     V.visitarDisco(this);
 }
-
-void Disco::aceptar(VisitantePrecioDetalle& V)
-{
-    V.visitarDisco(this);
-}
-
 

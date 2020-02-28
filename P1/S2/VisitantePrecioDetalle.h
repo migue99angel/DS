@@ -1,6 +1,7 @@
 /* 
  * File:   VisitantePrecioDetalle.h
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  *
  * Created on 27 de febrero de 2020, 10:51
  */
@@ -8,7 +9,7 @@
 #ifndef VISITANTEPRECIODETALLE_H
 #define VISITANTEPRECIODETALLE_H
 #include "Visitante.h"
-class VisitantePrecioDetalle {
+class VisitantePrecioDetalle : public Visitante {
 public:
     VisitantePrecioDetalle();
     void visitarDisco(Disco* d);

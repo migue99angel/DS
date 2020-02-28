@@ -6,7 +6,8 @@
 
 /* 
  * File:   Tarjeta.cpp
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  * 
  * Created on 27 de febrero de 2020, 10:34
  */
@@ -24,12 +25,7 @@ Tarjeta::Tarjeta(float p, std::string desc)
     this->descripcion = desc;
 }
 
-void Tarjeta::aceptar(VisitantePrecio& V)
-{
-    V.visitarTarjeta(this);
-}
-
-void Tarjeta::aceptar(VisitantePrecioDetalle& V)
+void Tarjeta::aceptar(Visitante& V)
 {
     V.visitarTarjeta(this);
 }

@@ -1,6 +1,7 @@
 /* 
  * File:   Bus.cpp
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  * 
  * Created on 27 de febrero de 2020, 10:31
  */
@@ -18,12 +19,7 @@ Bus::Bus(float p, std::string desc)
     this->descripcion = desc;
 }
 
-void Bus::aceptar(VisitantePrecio& V)
-{
-    V.visitarBus(this);
-}
-
-void Bus::aceptar(VisitantePrecioDetalle& V)
+void Bus::aceptar(Visitante& V)
 {
     V.visitarBus(this);
 }

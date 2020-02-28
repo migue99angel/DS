@@ -40,7 +40,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Disco.o \
 	${OBJECTDIR}/Ordenador.o \
 	${OBJECTDIR}/Tarjeta.o \
-	${OBJECTDIR}/Visitante.o \
 	${OBJECTDIR}/VisitantePrecio.o \
 	${OBJECTDIR}/VisitantePrecioDetalle.o \
 	${OBJECTDIR}/main.o
@@ -94,11 +93,6 @@ ${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tarjeta.o Tarjeta.cpp
-
-${OBJECTDIR}/Visitante.o: Visitante.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Visitante.o Visitante.cpp
 
 ${OBJECTDIR}/VisitantePrecio.o: VisitantePrecio.cpp
 	${MKDIR} -p ${OBJECTDIR}

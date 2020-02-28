@@ -6,7 +6,8 @@
 
 /* 
  * File:   Ordenador.cpp
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  * 
  * Created on 27 de febrero de 2020, 10:37
  */
@@ -21,14 +22,7 @@ Ordenador::Ordenador(float pDisco, float pTarjeta, float pBus, std::string dDisc
     b = new Bus(pBus,dBus);
 }
 
-void Ordenador::aceptar(VisitantePrecio& V)
-{
-    b->aceptar(V);
-    d->aceptar(V);
-    t->aceptar(V);        
-}
-
-void Ordenador::aceptar(VisitantePrecioDetalle& V)
+void Ordenador::aceptar(Visitante& V)
 {
     b->aceptar(V);
     d->aceptar(V);

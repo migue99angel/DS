@@ -1,7 +1,8 @@
 
 /* 
  * File:   Visitante.h
- * Author: migue
+ * Author: Miguel Ángel Posadas
+ * Author: Francisco Dominguez
  *
  * Created on 27 de febrero de 2020, 10:44
  */
@@ -17,10 +18,9 @@
 
 class Visitante {
 public:
-    Visitante();
-    void visitarDisco(Disco* d);
-    void visitarTarjeta(Tarjeta* t);
-    void visitarBus(Bus* b);
+    virtual void visitarDisco(Disco* d) = 0;
+    virtual void visitarTarjeta(Tarjeta* t) = 0;
+    virtual void visitarBus(Bus* b) = 0;
 private:
 
 };
