@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /* 
  * File:   Disco.cpp
@@ -25,8 +20,8 @@ Disco::Disco(float p, std::string desc)
     this->descripcion = desc;
 }
 
-void Disco::aceptar(Visitante& V)
+void Disco::aceptar(Visitante& V, Persona& P)
 {
-    V.visitarDisco(this);
+    V.visitarDisco(this,P);
 }
 

@@ -12,15 +12,16 @@
 class VisitantePrecioDetalle : public Visitante {
 public:
     VisitantePrecioDetalle();
-    void visitarDisco(Disco* d);
-    void visitarTarjeta(Tarjeta* t);
-    void visitarBus(Bus* b);
+    void visitarDisco(Disco* d, Persona& P);
+    void visitarTarjeta(Tarjeta* t, Persona& P);
+    void visitarBus(Bus* b, Persona& P);
     void limpiar();
     void resultado();
 private:
-    pair<int,std::string> disco;
-    pair<int,std::string> tarjeta;
-    pair<int,std::string> bus;
+    pair<double,std::string> disco;
+    pair<double,std::string> tarjeta;
+    pair<double,std::string> bus;
+    double coste = 0;
 
 };
 

@@ -17,11 +17,12 @@
 #include "Disco.h"
 #include "Bus.h"
 #include "Tarjeta.h"
+#include "Persona.h"
 using namespace std;
 class Ordenador {
 public:
     Ordenador(float pDisco, float pTarjeta, float pBus, std::string dDisco, std::string dTarjeta, std::string dBus);
-    void aceptar(Visitante& V);
+    void aceptar(Visitante& V, Persona& P);
     inline Tarjeta* getTarjeta(){return this->t;}
     inline Disco* getDisco(){return this->d;}
     inline Bus* getBus(){return  this->b;}

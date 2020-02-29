@@ -38,7 +38,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/Bus.o \
 	${OBJECTDIR}/ComponenteEquipo.o \
 	${OBJECTDIR}/Disco.o \
+	${OBJECTDIR}/Estudiante.o \
+	${OBJECTDIR}/Mayorista.o \
 	${OBJECTDIR}/Ordenador.o \
+	${OBJECTDIR}/Persona.o \
 	${OBJECTDIR}/Tarjeta.o \
 	${OBJECTDIR}/VisitantePrecio.o \
 	${OBJECTDIR}/VisitantePrecioDetalle.o \
@@ -84,10 +87,25 @@ ${OBJECTDIR}/Disco.o: Disco.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Disco.o Disco.cpp
 
+${OBJECTDIR}/Estudiante.o: Estudiante.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Estudiante.o Estudiante.cpp
+
+${OBJECTDIR}/Mayorista.o: Mayorista.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mayorista.o Mayorista.cpp
+
 ${OBJECTDIR}/Ordenador.o: Ordenador.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ordenador.o Ordenador.cpp
+
+${OBJECTDIR}/Persona.o: Persona.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Persona.o Persona.cpp
 
 ${OBJECTDIR}/Tarjeta.o: Tarjeta.cpp
 	${MKDIR} -p ${OBJECTDIR}

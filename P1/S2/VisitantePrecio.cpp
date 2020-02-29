@@ -13,18 +13,18 @@ VisitantePrecio::VisitantePrecio()
     this->limpiar();
 }
 
-void VisitantePrecio::visitarBus(Bus* b)
+void VisitantePrecio::visitarBus(Bus* b, Persona& P)
 {
-    this->coste += b->getPrecio();
+    this->coste += b->getPrecio()*P.getDescuento();
 }
 
-void VisitantePrecio::visitarDisco(Disco* d)
+void VisitantePrecio::visitarDisco(Disco* d, Persona& P)
 {
-    this->coste += d->getPrecio();
+    this->coste += d->getPrecio()*P.getDescuento();
 }
 
-void VisitantePrecio::visitarTarjeta(Tarjeta* t)
+void VisitantePrecio::visitarTarjeta(Tarjeta* t, Persona& P)
 {
-    this->coste += t->getPrecio();
+    this->coste += t->getPrecio()*P.getDescuento();
 }
 

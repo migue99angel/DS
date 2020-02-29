@@ -20,7 +20,7 @@ class Tarjeta : public ComponenteEquipo {
 public:
     Tarjeta();
     Tarjeta(float p, std::string desc);
-    void aceptar(Visitante& V);
+    void aceptar(Visitante& V, Persona& P);
 private:
 
 };

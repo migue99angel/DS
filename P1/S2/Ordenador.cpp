@@ -22,11 +22,11 @@ Ordenador::Ordenador(float pDisco, float pTarjeta, float pBus, std::string dDisc
     b = new Bus(pBus,dBus);
 }
 
-void Ordenador::aceptar(Visitante& V)
+void Ordenador::aceptar(Visitante& V, Persona& P)
 {
-    b->aceptar(V);
-    d->aceptar(V);
-    t->aceptar(V);        
+    d->aceptar(V,P);
+    t->aceptar(V,P);   
+    b->aceptar(V,P);
 }
 
 void Ordenador::mostrar()

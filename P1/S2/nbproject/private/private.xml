@@ -7,23 +7,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/migue/NetBeansProjects/Visitante/Persona.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Ordenador.cpp</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/VisitantePrecio.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/ComponenteEquipo.cpp</file>
-            <file>file:/home/migue/NetBeansProjects/Visitante/Visitante.cpp</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/VisitantePrecio.cpp</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Tarjeta.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/VisitantePrecioDetalle.h</file>
+            <file>file:/home/migue/NetBeansProjects/Visitante/Mayorista.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Tarjeta.cpp</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Visitante.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Ordenador.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Bus.cpp</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/main.cpp</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/VisitantePrecioDetalle.cpp</file>
-            <file>file:/home/migue/NetBeansProjects/Visitante/ComponenteEquipo.h</file>
+            <file>file:/home/migue/NetBeansProjects/Visitante/Persona.cpp</file>
+            <file>file:/home/migue/NetBeansProjects/Visitante/Estudiante.cpp</file>
+            <file>file:/home/migue/NetBeansProjects/Visitante/Mayorista.cpp</file>
+            <file>file:/home/migue/NetBeansProjects/Visitante/Estudiante.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Bus.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Disco.h</file>
             <file>file:/home/migue/NetBeansProjects/Visitante/Disco.cpp</file>
+            <file>file:/home/migue/NetBeansProjects/Visitante/ComponenteEquipo.h</file>
         </group>
     </open-files>
 </project-private>

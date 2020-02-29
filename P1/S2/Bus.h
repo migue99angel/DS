@@ -19,7 +19,7 @@ class Bus: public ComponenteEquipo {
 public:
     Bus();
     Bus(float p, std::string desc);
-    void aceptar(Visitante& V);
+    void aceptar(Visitante& V, Persona& P);
 private:
 
 };

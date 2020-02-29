@@ -25,7 +25,7 @@ Tarjeta::Tarjeta(float p, std::string desc)
     this->descripcion = desc;
 }
 
-void Tarjeta::aceptar(Visitante& V)
+void Tarjeta::aceptar(Visitante& V, Persona& P)
 {
-    V.visitarTarjeta(this);
+    V.visitarTarjeta(this,P);
 }

@@ -18,9 +18,9 @@
 
 class Visitante {
 public:
-    virtual void visitarDisco(Disco* d) = 0;
-    virtual void visitarTarjeta(Tarjeta* t) = 0;
-    virtual void visitarBus(Bus* b) = 0;
+    virtual void visitarDisco(Disco* d,Persona& P) = 0;
+    virtual void visitarTarjeta(Tarjeta* t,Persona& P) = 0;
+    virtual void visitarBus(Bus* b,Persona& P) = 0;
 private:
 
 };

@@ -19,7 +19,7 @@ Bus::Bus(float p, std::string desc)
     this->descripcion = desc;
 }
 
-void Bus::aceptar(Visitante& V)
+void Bus::aceptar(Visitante& V, Persona& P)
 {
-    V.visitarBus(this);
+    V.visitarBus(this,P);
 }

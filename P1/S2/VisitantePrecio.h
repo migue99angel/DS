@@ -18,10 +18,10 @@
 class VisitantePrecio : public Visitante {
 public:
     VisitantePrecio();
-    void visitarDisco(Disco* d);
-    void visitarTarjeta(Tarjeta* t);
-    void visitarBus(Bus* b);
-    inline int getCoste(){return coste;}
+    void visitarDisco(Disco* d, Persona& P);
+    void visitarTarjeta(Tarjeta* t, Persona& P);
+    void visitarBus(Bus* b, Persona& P);
+    inline float getCoste(){return coste;}
     inline void limpiar(){this->coste = 0;}
 private:
     float coste;
