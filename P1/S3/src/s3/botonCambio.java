@@ -7,6 +7,6 @@ public class botonCambio implements Observer {
     
     @Override
     public void update(Observable o, Object temp) {
-        
+        this.temperaturaObservador = (float) temp;
     }
 }
