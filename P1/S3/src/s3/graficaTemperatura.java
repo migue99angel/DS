@@ -9,4 +9,8 @@ public class graficaTemperatura implements Observer {
     public void update(Observable o, Object temp) {
         this.temperaturaObservador = (float) temp;
     }
+    
+    public float getTemperatura() {
+        return this.temperaturaObservador;
+    }
 }
