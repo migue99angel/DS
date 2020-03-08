@@ -11,7 +11,7 @@ public class Simulador extends Observable implements Runnable {
     
     private float temperatura;
     volatile boolean ejecutar = true;
-    private static GUIBoton boton = new GUIBoton();
+    private static GUIBoton boton;
     private static GUIGrafica grafica = new GUIGrafica();
     private static GUIPantalla pantalla;
     
@@ -28,9 +28,8 @@ public class Simulador extends Observable implements Runnable {
     @Override
     public void run(){
         while(this.ejecutar) {
-            this.pantalla.setObservable(this);
             // Mínimo y máximo de temperatura. Generamos una entre medias.  
-            float max = 45, min = -10;
+            float max = 50, min = -10;
             Random rand = new Random();
             float temp = min + rand.nextFloat() * (max - min);
             this.setTemperatura(temp);
@@ -56,6 +55,7 @@ public class Simulador extends Observable implements Runnable {
         // Creamos el observable
         Simulador sim = new Simulador();
         pantalla = new GUIPantalla(sim);
+        boton = new GUIBoton(sim);
         sim.addObserver(boton);
         sim.addObserver(grafica);
 
