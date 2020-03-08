@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/botonCambio.java</file>
+            <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/GUIGrafica.java</file>
             <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/Simulador.java</file>
-            <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/graficaTemperatura.java</file>
-            <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/pantallaTemperatura.java</file>
+            <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/GUIPantalla.java</file>
+            <file>file:/C:/Users/frand/Documents/NetBeansProjects/S3/src/s3/GUIBoton.java</file>
         </group>
     </open-files>
 </project-private>
