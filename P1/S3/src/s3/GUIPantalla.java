@@ -16,9 +16,13 @@ public class GUIPantalla extends javax.swing.JFrame {
     /**
      * Creates new form GUIPantalla
      */
-    public GUIPantalla() {
+    public GUIPantalla(Simulador sim) {
         initComponents();
+        this.obs = sim;
+        this.setVisible(true);
     }
+
+
     
     public void setObservable(Simulador o) {
         this.obs = o;
@@ -117,7 +121,7 @@ public class GUIPantalla extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUIPantalla().setVisible(true);
+
             }
         });
     }

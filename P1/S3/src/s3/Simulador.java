@@ -11,9 +11,9 @@ public class Simulador extends Observable implements Runnable {
     
     private float temperatura;
     volatile boolean ejecutar = true;
-    private GUIBoton boton = new GUIBoton();
-    private GUIGrafica grafica = new GUIGrafica();
-    private GUIPantalla pantalla = new GUIPantalla();
+    private static GUIBoton boton = new GUIBoton();
+    private static GUIGrafica grafica = new GUIGrafica();
+    private static GUIPantalla pantalla;
     
     public float getTemperatura() {
         return this.temperatura;
@@ -55,12 +55,10 @@ public class Simulador extends Observable implements Runnable {
     public static void main(String[] args) throws InterruptedException {
         // Creamos el observable
         Simulador sim = new Simulador();
-        sim.pantalla.setObservable(sim);
-        
-        sim.addObserver(sim.boton);
-        sim.addObserver(sim.grafica);
-        
-        
+        pantalla = new GUIPantalla(sim);
+        sim.addObserver(boton);
+        sim.addObserver(grafica);
+
         // Iniciamos la hebra
         Thread h1 = new Thread(sim);
         h1.start();
