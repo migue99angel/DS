@@ -9,30 +9,40 @@ import java.util.logging.Logger;
 
 public class Simulador extends Observable implements Runnable {
     
-    private float temperatura;
-    volatile boolean ejecutar = true;
-    private static GUIBoton boton;
-    private static GUIGrafica grafica = new GUIGrafica();
-    private static GUIPantalla pantalla;
+    private double temperaturaC;
+    private double temperaturaF;
     
-    public float getTemperatura() {
-        return this.temperatura;
+    public double getTemperaturaC() {
+        return this.temperaturaC;
     }
     
-    public void setTemperatura(float t) {
-        this.temperatura = t;
+    public void setTemperaturaC(double t) {
+        this.temperaturaC = t;
+        setChanged();
+        notifyObservers(t);
+    }
+    
+    public double getTemperaturaF() {
+        return this.temperaturaF;
+    }
+    
+    public void setTemperaturaF(double t) {
+        this.temperaturaF = t;
         setChanged();
         notifyObservers(t);
     }
     
     @Override
     public void run(){
-        while(this.ejecutar) {
+        while(true) {
             // Mínimo y máximo de temperatura. Generamos una entre medias.  
             float max = 50, min = -10;
             Random rand = new Random();
-            float temp = min + rand.nextFloat() * (max - min);
-            this.setTemperatura(temp);
+            double tempC = min + rand.nextFloat() * (max - min);
+            this.setTemperaturaC(tempC);
+            
+            double tempF = ((double) (9/5) * tempC) + 68;
+            this.setTemperaturaF(tempF);
 
             try {
                 //Ponemos a "Dormir" el programa durante los ms que queremos
@@ -41,31 +51,5 @@ public class Simulador extends Observable implements Runnable {
                 System.out.println(e);
              }
         }
-    }
-    
-    public boolean getEstado() {
-        return this.ejecutar;
-    }
-    
-    public void detener() {
-        this.ejecutar = false;
-    }
-    
-    public static void main(String[] args) throws InterruptedException {
-        // Creamos el observable
-        Simulador sim = new Simulador();
-        pantalla = new GUIPantalla(sim);
-        boton = new GUIBoton(sim);
-        sim.addObserver(boton);
-        sim.addObserver(grafica);
-
-        // Iniciamos la hebra
-        Thread h1 = new Thread(sim);
-        h1.start();
-        
-        sim.boton.main(new String[0]);
-        sim.grafica.main(new String[0]);
-        sim.pantalla.main(new String[0]);
-
     }
 }
