@@ -3,6 +3,11 @@ import java.util.ArrayList;
 
 public class CadenaFiltros {
 	public ArrayList<Filtro> cadena = new ArrayList<>();
+        
+        CadenaFiltros()
+        {
+            cadena.clear();
+        }
 
 	public double ejecutar(double rev_local, int estado) {
             rev_local = this.cadena.get(0).ejecutar(rev_local, estado);

@@ -5,7 +5,7 @@ public class Salpicadero {
 	private double revoluciones = 0;
         long inicio = 0;
         long actual = 0;
-        
+        long anterior = 0;
         static final double radio = 0.15;
         
         Salpicadero()
@@ -16,14 +16,20 @@ public class Salpicadero {
 
 	public void ejecutar(double revol, int EstadoMotor)
         {
-            
-            long anterior = this.actual;
-            this.actual = System.currentTimeMillis();
-            this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
-            this.revoluciones = revol;
-            
-            this.distancia += this.vLineal * 100/((this.actual - anterior));
-            System.out.println("Se han simulado "+((this.actual - anterior))+" minutos");
+            if(EstadoMotor == 0 || EstadoMotor == 1)
+            {
+                this.anterior = this.actual;
+                this.actual = System.currentTimeMillis();
+                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
+                this.revoluciones = revol;
+                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+                System.out.println("Se han simulado "+((this.actual - anterior))+" milisegundos");
+            }
+            else
+            {
+                System.out.println("Se han encendido el coche ");
+                this.actual = System.currentTimeMillis();
+            }
 	}
         
         public double getVelocidad(){return this.vLineal;}
