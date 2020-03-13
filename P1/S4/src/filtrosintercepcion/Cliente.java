@@ -13,10 +13,11 @@ package filtrosintercepcion;
 public class Cliente {
 
     public static GestorFiltros gestor;
+    private static GUISalpicadero salpicadero;
     
     public static void main(String[] args) {
-        gestor = new GestorFiltros();
-        ((Thread)gestor).start();
+        salpicadero = new GUISalpicadero();
+        salpicadero.main(new String[0]);
     }
     
 }

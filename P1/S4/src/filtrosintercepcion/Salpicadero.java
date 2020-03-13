@@ -27,7 +27,7 @@ public class Salpicadero {
             }
             else
             {
-                System.out.println("Se han encendido el coche ");
+                System.out.println("Se ha encendido el coche ");
                 this.actual = System.currentTimeMillis();
             }
 	}
