@@ -20,7 +20,18 @@ public class Salpicadero {
 
 	public void ejecutar(double revol, int EstadoMotor)
         {
+            // Acelerando o frenando
             if(EstadoMotor == 0 || EstadoMotor == 1)
+            {
+                this.anterior = this.actual;
+                this.actual = System.currentTimeMillis();
+                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
+                this.revoluciones = revol;
+                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+            }
+            
+            // Ni acelerando ni frenando, pero velocidad constante
+            if(EstadoMotor == -1)
             {
                 this.anterior = this.actual;
                 this.actual = System.currentTimeMillis();

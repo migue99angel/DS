@@ -210,6 +210,18 @@ public class GUISalpicadero extends javax.swing.JFrame {
             jToggleButton2.setEnabled(false);
             jToggleButton3.setEnabled(false);
         }
+        
+        new Thread(){
+            public void run() {
+                while(true){
+                    gestor.peticionFiltros(-1);
+                    
+                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    jTextField3.setText(String.valueOf(kilometros));
+                    jTextField3.repaint();
+                }
+            }
+        }.start();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
