@@ -201,6 +201,12 @@ public class GUISalpicadero extends javax.swing.JFrame {
         }
         
         else {
+            // Si el coche está apagado, la velocidad y las revoluciones son 0
+            gestor.salpicadero.setVelocidad(0);
+            gestor.salpicadero.setRevoluciones(0);
+            jTextField1.setText(String.valueOf(0.0));
+            jTextField2.setText(String.valueOf(0.0));
+            
             jLabel1.setText("APAGADO");
             jLabel1.setForeground(Color.red);
             
@@ -213,7 +219,7 @@ public class GUISalpicadero extends javax.swing.JFrame {
         
         new Thread(){
             public void run() {
-                while(true){
+                while(jToggleButton1.isSelected()){
                     gestor.peticionFiltros(-1);
                     
                     double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;

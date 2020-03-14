@@ -56,7 +56,5 @@ public class Salpicadero {
         public void setDistancia(double d){this.distancia = d;}
         
         public void setRevoluciones(double r){this.revoluciones = r;}
-        
-        public long getTiempoSimulado(){return ((this.actual - this.inicio));}
 
 }
