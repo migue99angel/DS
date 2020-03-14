@@ -1,4 +1,8 @@
 package filtrosintercepcion;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 public class Salpicadero {
 	private double vLineal = 0;
 	private double distancia = 0;
@@ -43,4 +47,5 @@ public class Salpicadero {
         public void setRevoluciones(double r){this.revoluciones = r;}
         
         public long getTiempoSimulado(){return ((this.actual - this.inicio));}
+
 }

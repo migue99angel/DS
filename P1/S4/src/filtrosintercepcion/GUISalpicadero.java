@@ -8,6 +8,8 @@ package filtrosintercepcion;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,6 +55,11 @@ public class GUISalpicadero extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Salpicadero");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                cerrando(evt);
+            }
+        });
 
         jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jToggleButton1.setForeground(java.awt.Color.green);
@@ -275,6 +282,16 @@ public class GUISalpicadero extends javax.swing.JFrame {
         }.start();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void cerrando(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_cerrando
+
+        this.addWindowListener (new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e){
+                        System.exit(0);
+                    }
+                });
+    }//GEN-LAST:event_cerrando
+
     /**
      * @param args the command line arguments
      */
@@ -329,5 +346,4 @@ public class GUISalpicadero extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     public static GestorFiltros gestor;
-    private boolean acelerando = false;
 }
