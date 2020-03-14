@@ -5,12 +5,17 @@ public class CalcularVelocidad implements Filtro {
         
         @Override
 	public double ejecutar(double Revoluciones, int EstadoMotor) {
+            double rev = Revoluciones;
             // EstadoMotor 0, el coche está acelerando
 		if(EstadoMotor == 0 && Revoluciones < 5000)
-                    return Revoluciones += 100;
+                    rev += 100;
                 else
                     if(EstadoMotor == 1 && Revoluciones > 0) //EstadoMotor 1, el coche está frenando
-                        return Revoluciones -= 100;
-                return Revoluciones;    //Si no está ni frenando ni acelerando no se modifican las revoluciones
+                        rev -= 100;
+                
+                if(rev < 0)
+                    rev = 0;
+                
+                return rev;
 	}
 }

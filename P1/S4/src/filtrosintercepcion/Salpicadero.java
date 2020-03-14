@@ -23,11 +23,9 @@ public class Salpicadero {
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
                 this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
-                System.out.println("Se han simulado "+((this.actual - anterior))+" milisegundos");
             }
-            else
-            {
-                System.out.println("Se ha encendido el coche ");
+            
+            else {
                 this.actual = System.currentTimeMillis();
             }
 	}
