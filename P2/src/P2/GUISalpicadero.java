@@ -222,9 +222,26 @@ public class GUISalpicadero extends javax.swing.JFrame {
                 while(jToggleButton1.isSelected()){
                     gestor.peticionFiltros(-1);
                     
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    jTextField3.setText(String.valueOf(kilometros));
-                    jTextField3.repaint();
+                    if(!jToggleButton2.isSelected() && !jToggleButton3.isSelected()) {
+                        double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        jTextField3.setText(String.valueOf(kilometros));
+                        jTextField3.repaint();
+
+                        double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                        jTextField1.setText(String.valueOf(redondeada));
+                        jTextField1.repaint();
+
+                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                        jTextField2.setText(String.valueOf(revoluciones));
+                        jTextField2.repaint();
+                    }
+                    
+                    
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }.start();

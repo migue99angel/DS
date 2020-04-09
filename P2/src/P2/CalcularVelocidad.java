@@ -3,7 +3,6 @@ package P2;
 public class CalcularVelocidad implements Filtro {
         CalcularVelocidad(){}
         
-        @Override
 	public double ejecutar(double Revoluciones, int EstadoMotor) {
             double rev = Revoluciones;
             // EstadoMotor 0, el coche está acelerando
