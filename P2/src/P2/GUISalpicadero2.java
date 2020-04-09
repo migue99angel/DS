@@ -5,12 +5,27 @@
  */
 package P2;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Fran
  */
 public class GUISalpicadero2 extends javax.swing.JApplet {
-    
+    /**
+     * Creates new form GUISalpicadero2
+     */
+    public GUISalpicadero2() {
+        this.gestor = new GestorFiltros();
+        this.gestor.run();
+        initComponents();
+    }
     /**
      * Initializes the applet GUISalpicadero2
      */
@@ -62,17 +77,21 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     private void initComponents() {
 
         radial4Lcd1 = new eu.hansolo.steelseries.gauges.Radial4Lcd();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        displayCircular1 = new eu.hansolo.steelseries.gauges.DisplayCircular();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        radial1Vertical1 = new eu.hansolo.steelseries.gauges.Radial1Vertical();
+        displayMulti1 = new eu.hansolo.steelseries.gauges.DisplayMulti();
+
+        setEnabled(false);
 
         radial4Lcd1.setLcdDecimals(1);
         radial4Lcd1.setLcdUnitString("km/h");
         radial4Lcd1.setLcdUnitStringVisible(true);
-        radial4Lcd1.setLedBlinking(true);
         radial4Lcd1.setMaxValue(200.0);
         radial4Lcd1.setMinimumSize(new java.awt.Dimension(200, 200));
         radial4Lcd1.setThresholdVisible(true);
@@ -80,78 +99,224 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         radial4Lcd1.setTitle("Velocímetro");
         radial4Lcd1.setUnitString("km/h");
 
-        jButton1.setText("Arrancar");
-
-        jButton2.setText("Pisar Freno");
-
         jButton3.setText("Parar");
+        jButton3.setEnabled(false);
 
         jButton4.setText("Acelerar");
+        jButton4.setEnabled(false);
 
         jButton5.setText("Mantener");
+        jButton5.setEnabled(false);
 
         jButton6.setText("Reiniciar");
+        jButton6.setEnabled(false);
+
+        jToggleButton1.setText("ARRANCAR");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        displayCircular1.setUnitString("km   ");
+
+        jToggleButton2.setText("PISAR FRENO");
+        jToggleButton2.setEnabled(false);
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        displayMulti1.setUnitString("RPM x1000");
+
+        javax.swing.GroupLayout displayMulti1Layout = new javax.swing.GroupLayout(displayMulti1);
+        displayMulti1.setLayout(displayMulti1Layout);
+        displayMulti1Layout.setHorizontalGroup(
+            displayMulti1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 215, Short.MAX_VALUE)
+        );
+        displayMulti1Layout.setVerticalGroup(
+            displayMulti1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 64, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(radial4Lcd1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(displayCircular1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(displayMulti1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addGap(43, 43, 43)
                         .addComponent(jButton5)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(78, 78, 78))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addGap(106, 106, 106))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addGap(106, 106, 106))))))
+                            .addComponent(jButton6)
+                            .addComponent(jButton4))
+                        .addGap(59, 59, 59))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(radial1Vertical1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(radial4Lcd1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(radial4Lcd1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5))
-                .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addGap(36, 36, 36))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(radial4Lcd1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jToggleButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton5)))
+                            .addComponent(displayMulti1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton6))
+                    .addComponent(displayCircular1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(radial1Vertical1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        /* Si está seleccionado, podemos seleccionar el resto */
+        if(jToggleButton1.isSelected()) {
+            if(gestor.getState() == Thread.State.RUNNABLE) {
+                ((Thread)gestor).start();
+            }
+            
+            jToggleButton1.setText("APAGAR");
+            
+            /* Activamos el resto de botones */
+            jToggleButton2.setEnabled(true);
+            jButton3.setEnabled(true);
+            jButton4.setEnabled(true);
+            jButton5.setEnabled(true);
+            jButton6.setEnabled(true);
+            
+            /* Encendemos el led */
+            radial4Lcd1.setLedBlinking(true);
+        }
+        
+        /* Si no está seleccionado, decrementamos la velocidad según el rozamiento y el resto de botones dejan de ser seleccionables */
+        else {
+            jToggleButton1.setText("ARRANCAR");
+            
+            jToggleButton2.setEnabled(false);
+            jButton3.setEnabled(false);
+            jButton4.setEnabled(false);
+            jButton5.setEnabled(false);
+            jButton6.setEnabled(false);
+            
+            /* Apagamos el led */
+            radial4Lcd1.setLedBlinking(false);
+        }
+        
+        new Thread(){
+            public void run() {
+                    gestor.peticionFiltros(-1);
+                    
+                    if(jButton3.isSelected()) {
+                        /* Para el cuentakilómetros */
+                        double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometros);
+                        displayCircular1.repaint();
+                        
+                        /* Para el velocímetro */
+                        double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                        radial4Lcd1.setValue(redondeada);
+                        radial4Lcd1.repaint();
+                        
+                        /* Para el cuentarrevoluciones */
+                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                        displayCircular1.setValue(revoluciones);
+                        displayCircular1.repaint();
+                    }
+                    
+                    /* Pequeña espera para que tengan margen de actualizarse */
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            }
+        }.start();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        new Thread(){
+            public void run(){
+                while(jToggleButton1.isSelected()) {
+                    jToggleButton2.setText("SOLTAR FRENO");
+
+                    gestor.peticionFiltros(1);
+                    /* Para el cuentakilómetros */
+                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometros);
+                    displayCircular1.repaint();
+
+                    /* Para el velocímetro */
+                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                    radial4Lcd1.setValue(redondeada);
+                    radial4Lcd1.repaint();
+
+                    /* Para el cuentarrevoluciones */
+                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                    displayMulti1.setValue(revoluciones);
+                    displayMulti1.repaint();
+                    
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }.start();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private eu.hansolo.steelseries.gauges.DisplayCircular displayCircular1;
+    private eu.hansolo.steelseries.gauges.DisplayMulti displayMulti1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private eu.hansolo.steelseries.gauges.Radial1Vertical radial1Vertical1;
     private eu.hansolo.steelseries.gauges.Radial4Lcd radial4Lcd1;
     // End of variables declaration//GEN-END:variables
+
+    public static GestorFiltros gestor;
 }

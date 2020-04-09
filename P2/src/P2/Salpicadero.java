@@ -9,6 +9,8 @@ public class Salpicadero implements Observer {
 	private double vLineal = 0;
 	private double distancia = 0;
 	private double revoluciones = 0;
+        private double vMantenida = 0;
+        private double revolucionesMantenida = 0;
         long inicio = 0;
         long actual = 0;
         long anterior = 0;
@@ -25,11 +27,11 @@ public class Salpicadero implements Observer {
             this.estadoPalanca = (int) temp;
         }
         
-
+        // SI ESTAMOS EN MANTENER Y SE PISA EL FRENO PONER LA PALANCA EN PARAR
 	public void ejecutar(double revol, int EstadoMotor)
         {
-            // Acelerando o frenando
-            if(EstadoMotor == 0 || EstadoMotor == 1)
+            // Acelerando o frenando y modo manual
+            if((EstadoMotor == 0 || EstadoMotor == 1) && estadoPalanca == 1)
             {
                 this.anterior = this.actual;
                 this.actual = System.currentTimeMillis();
@@ -37,15 +39,29 @@ public class Salpicadero implements Observer {
                 this.revoluciones = revol;
                 this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
             }
-            
-            // Ni acelerando ni frenando, pero velocidad constante
-            if(EstadoMotor == -1)
+            //Si modo mantener
+            if(estadoPalanca == 2)
             {
                 this.anterior = this.actual;
                 this.actual = System.currentTimeMillis();
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
                 this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+                if(vMantenida != this.vLineal)
+                {
+                    this.vMantenida = this.vLineal;
+                    this.revolucionesMantenida = this.revoluciones;
+                }
+
+            }
+            //Si modo reiniciar
+            if(estadoPalanca == 3)
+            {
+                this.anterior = this.actual;
+                this.actual = System.currentTimeMillis();
+                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
+                this.revoluciones = revol;
+                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;  
             }
             
             else {
@@ -65,4 +81,8 @@ public class Salpicadero implements Observer {
         
         public void setRevoluciones(double r){this.revoluciones = r;}
 
+        public int getEstadoPalanca(){return this.estadoPalanca;}
+        
+        public double getRevolucionesObjetivo(){return this.revolucionesMantenida;}
+        
 }
