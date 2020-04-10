@@ -24,7 +24,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     public GUISalpicadero2() {
         this.gestor = new GestorFiltros();
         this.gestor.run();
-        initComponents();
+        this.palanca = new Palanca();
     }
     /**
      * Initializes the applet GUISalpicadero2
@@ -101,15 +101,35 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
 
         jButton3.setText("Parar");
         jButton3.setEnabled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Acelerar");
         jButton4.setEnabled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Mantener");
         jButton5.setEnabled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Reiniciar");
         jButton6.setEnabled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jToggleButton1.setText("ARRANCAR");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -266,7 +286,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     try {
                         Thread.sleep(800);
                     } catch (InterruptedException ex) {
-                        Logger.getLogger(GUISalpicadero.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
             }
         }.start();
@@ -297,12 +317,180 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     try {
                         Thread.sleep(800);
                     } catch (InterruptedException ex) {
-                        Logger.getLogger(GUISalpicadero.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
         }.start();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /* Botón de frenar */
+        new Thread(){
+            public void run(){
+                while(jButton3.isSelected()) {
+                    /* Cuando está seleccionado el botón de frenar, solo podemos movernos a "Acelerar" */
+                    jButton4.setEnabled(true);
+                    jButton5.setEnabled(false);
+                    jButton6.setEnabled(false);
+                    
+                    /* Cambiamos la palanca a estado "Frenando" */
+                    palanca.setEstado(0);
+                    
+                    /* Aplicamos la opción de frenar a los filtros necesarios */
+                    gestor.peticionFiltros(1);
+                    
+                    /* Para el cuentakilómetros */
+                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometros);
+                    displayCircular1.repaint();
+
+                    /* Para el velocímetro */
+                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                    radial4Lcd1.setValue(redondeada);
+                    radial4Lcd1.repaint();
+
+                    /* Para el cuentarrevoluciones */
+                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                    displayMulti1.setValue(revoluciones);
+                    displayMulti1.repaint();
+                    
+                    /* Pequeña espera para que tengan margen de actualizarse */
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }.start();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        /* Botón de acelerar */
+        new Thread(){
+            public void run(){
+                while(jButton4.isSelected()) {
+                    /* Cuando está seleccionado el botón de acelerar, solo podemos movernos a "Mantener" */
+                    jButton3.setEnabled(false);
+                    jButton5.setEnabled(true);
+                    jButton6.setEnabled(false);
+                    
+                    /* Cambiamos la palanca a estado "Acelerando" */
+                    palanca.setEstado(1);
+                    
+                    /* Aplicamos la opción de acelerar a los filtros necesarios */
+                    gestor.peticionFiltros(0);
+                    
+                    /* Para el cuentakilómetros */
+                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometros);
+                    displayCircular1.repaint();
+
+                    /* Para el velocímetro */
+                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                    radial4Lcd1.setValue(redondeada);
+                    radial4Lcd1.repaint();
+
+                    /* Para el cuentarrevoluciones */
+                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                    displayMulti1.setValue(revoluciones);
+                    displayMulti1.repaint();
+                    
+                    /* Pequeña espera para que tengan margen de actualizarse */
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }.start();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        /* Botón de mantener */
+        new Thread(){
+            public void run(){
+                while(jButton5.isSelected()) {
+                    /* Cuando está seleccionado el botón de mantener, solo podemos movernos a "Acelerar" o "Frenar" */
+                    jButton3.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    jButton6.setEnabled(false);
+                    
+                    /* Cambiamos la palanca a estado "Mantener" */
+                    palanca.setEstado(2);
+                    
+                    /* Aplicamos la opción de mantener a los filtros necesarios */
+                    gestor.peticionFiltros(0);
+                    
+                    /* Para el cuentakilómetros */
+                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometros);
+                    displayCircular1.repaint();
+
+                    /* Para el velocímetro */
+                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                    radial4Lcd1.setValue(redondeada);
+                    radial4Lcd1.repaint();
+
+                    /* Para el cuentarrevoluciones */
+                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                    displayMulti1.setValue(revoluciones);
+                    displayMulti1.repaint();
+                    
+                    /* Pequeña espera para que tengan margen de actualizarse */
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }.start();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        /* Botón de reiniciar */
+        new Thread(){
+            public void run(){
+                while(jButton6.isSelected()) {
+                    /* Cuando está seleccionado el botón de mantener, solo podemos movernos a "Acelerar" o "Frenar" */
+                    jButton3.setEnabled(true);
+                    jButton4.setEnabled(false);
+                    jButton5.setEnabled(false);
+                    
+                    /* Cambiamos la palanca a estado "Mantener" */
+                    palanca.setEstado(3);
+                    
+                    /* Aplicamos la opción de reiniciar a los filtros necesarios */
+                    gestor.peticionFiltros(0);
+                    
+                    /* Para el cuentakilómetros */
+                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometros);
+                    displayCircular1.repaint();
+
+                    /* Para el velocímetro */
+                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                    radial4Lcd1.setValue(redondeada);
+                    radial4Lcd1.repaint();
+
+                    /* Para el cuentarrevoluciones */
+                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                    displayMulti1.setValue(revoluciones);
+                    displayMulti1.repaint();
+                    
+                    /* Pequeña espera para que tengan margen de actualizarse */
+                    try {
+                        Thread.sleep(800);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }.start();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -319,4 +507,5 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     // End of variables declaration//GEN-END:variables
 
     public static GestorFiltros gestor;
+    private static Palanca palanca;
 }
