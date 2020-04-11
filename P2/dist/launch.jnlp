@@ -19,6 +19,7 @@
 <jar href="lib/SteelSeries.jar"/>
 <jar href="lib/swing-layout-1.0.2.jar"/>
 <jar href="lib/trident.jar"/>
+<jar href="lib/AbsoluteLayout.jar"/>
 </resources>
     <applet-desc height="300" main-class="P2.GUISalpicadero2" name="P2" width="300">
     </applet-desc>
