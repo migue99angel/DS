@@ -25,6 +25,7 @@ public class Palanca extends Observable {
     public void setEstado(int estado) {
         if(estado == 0 || estado == 1 || estado == 2 || estado == 3) {
             this.estado = estado;
+            setChanged();
             notifyObservers(this.estado);
         }
         

@@ -25,6 +25,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         this.gestor = new GestorFiltros();
         this.gestor.run();
         this.palanca = new Palanca();
+        this.palanca.addObserver(this.gestor.salpicadero);
     }
     /**
      * Initializes the applet GUISalpicadero2
@@ -77,17 +78,15 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     private void initComponents() {
 
         radial4Lcd1 = new eu.hansolo.steelseries.gauges.Radial4Lcd();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         displayCircular1 = new eu.hansolo.steelseries.gauges.DisplayCircular();
         jToggleButton2 = new javax.swing.JToggleButton();
         radial1Vertical1 = new eu.hansolo.steelseries.gauges.Radial1Vertical();
         displayMulti1 = new eu.hansolo.steelseries.gauges.DisplayMulti();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -101,42 +100,6 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         radial4Lcd1.setTitle("Velocímetro");
         radial4Lcd1.setUnitString("km/h");
         getContentPane().add(radial4Lcd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 12, 280, 280));
-
-        jButton3.setText("Parar");
-        jButton3.setEnabled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 359, -1, -1));
-
-        jButton4.setText("Acelerar");
-        jButton4.setEnabled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 299, -1, -1));
-
-        jButton5.setText("Mantener");
-        jButton5.setEnabled(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 359, -1, -1));
-
-        jButton6.setText("Reiniciar");
-        jButton6.setEnabled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 400, -1, -1));
 
         jToggleButton1.setText("ARRANCAR");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -174,11 +137,37 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
 
         getContentPane().add(displayMulti1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 324, 215, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jToggleButton3.setText("PARAR");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));
+        jToggleButton4.setText("ACELERAR");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+
+        jToggleButton5.setText("MANTENER");
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, -1, -1));
+
+        jToggleButton6.setText("REINICIAR");
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -192,10 +181,10 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             
             /* Activamos el resto de botones */
             jToggleButton2.setEnabled(true);
-            jButton3.setEnabled(true);
-            jButton4.setEnabled(true);
-            jButton5.setEnabled(true);
-            jButton6.setEnabled(true);
+            jToggleButton3.setEnabled(true);
+            jToggleButton4.setEnabled(true);
+            jToggleButton5.setEnabled(true);
+            jToggleButton6.setEnabled(true);
             
             /* Encendemos el led */
             radial4Lcd1.setLedBlinking(true);
@@ -206,10 +195,10 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             jToggleButton1.setText("ARRANCAR");
             
             jToggleButton2.setEnabled(false);
-            jButton3.setEnabled(false);
-            jButton4.setEnabled(false);
-            jButton5.setEnabled(false);
-            jButton6.setEnabled(false);
+            jToggleButton3.setEnabled(false);
+            jToggleButton4.setEnabled(false);
+            jToggleButton5.setEnabled(false);
+            jToggleButton6.setEnabled(false);
             
             /* Apagamos el led */
             radial4Lcd1.setLedBlinking(false);
@@ -219,7 +208,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             public void run() {
                     gestor.peticionFiltros(-1);
                     
-                    if(jButton3.isSelected()) {
+                    if(jToggleButton3.isSelected()) {
                         /* Para el cuentakilómetros */
                         double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
                         displayCircular1.setValue(kilometros);
@@ -278,15 +267,15 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         }.start();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         /* Botón de frenar */
         new Thread(){
             public void run(){
-                while(jButton3.isSelected()) {
+                while(jToggleButton3.isSelected()) {
                     /* Cuando está seleccionado el botón de frenar, solo podemos movernos a "Acelerar" */
-                    jButton4.setEnabled(true);
-                    jButton5.setEnabled(false);
-                    jButton6.setEnabled(false);
+                    jToggleButton4.setEnabled(true);
+                    jToggleButton5.setEnabled(false);
+                    jToggleButton6.setEnabled(false);
                     
                     /* Cambiamos la palanca a estado "Frenando" */
                     palanca.setEstado(0);
@@ -318,17 +307,17 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                 }
             }
         }.start();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         /* Botón de acelerar */
         new Thread(){
             public void run(){
-                while(jButton4.isSelected()) {
+                while(jToggleButton4.isSelected()) {
                     /* Cuando está seleccionado el botón de acelerar, solo podemos movernos a "Mantener" */
-                    jButton3.setEnabled(false);
-                    jButton5.setEnabled(true);
-                    jButton6.setEnabled(false);
+                    jToggleButton3.setEnabled(false);
+                    jToggleButton5.setEnabled(true);
+                    jToggleButton6.setEnabled(false);
                     
                     /* Cambiamos la palanca a estado "Acelerando" */
                     palanca.setEstado(1);
@@ -344,6 +333,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     /* Para el velocímetro */
                     double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
                     radial4Lcd1.setValue(redondeada);
+                    System.out.println(redondeada);
                     radial4Lcd1.repaint();
 
                     /* Para el cuentarrevoluciones */
@@ -360,17 +350,17 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                 }
             }
         }.start();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
         /* Botón de mantener */
         new Thread(){
             public void run(){
-                while(jButton5.isSelected()) {
+                while(jToggleButton5.isSelected()) {
                     /* Cuando está seleccionado el botón de mantener, solo podemos movernos a "Acelerar" o "Frenar" */
-                    jButton3.setEnabled(true);
-                    jButton4.setEnabled(true);
-                    jButton6.setEnabled(false);
+                    jToggleButton3.setEnabled(true);
+                    jToggleButton4.setEnabled(true);
+                    jToggleButton6.setEnabled(false);
                     
                     /* Cambiamos la palanca a estado "Mantener" */
                     palanca.setEstado(2);
@@ -402,17 +392,17 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                 }
             }
         }.start();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
         /* Botón de reiniciar */
         new Thread(){
             public void run(){
-                while(jButton6.isSelected()) {
+                while(jToggleButton6.isSelected()) {
                     /* Cuando está seleccionado el botón de mantener, solo podemos movernos a "Acelerar" o "Frenar" */
-                    jButton3.setEnabled(true);
-                    jButton4.setEnabled(false);
-                    jButton5.setEnabled(false);
+                    jToggleButton3.setEnabled(true);
+                    jToggleButton4.setEnabled(false);
+                    jToggleButton5.setEnabled(false);
                     
                     /* Cambiamos la palanca a estado "Mantener" */
                     palanca.setEstado(3);
@@ -444,20 +434,18 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                 }
             }
         }.start();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jToggleButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private eu.hansolo.steelseries.gauges.DisplayCircular displayCircular1;
     private eu.hansolo.steelseries.gauges.DisplayMulti displayMulti1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
     private eu.hansolo.steelseries.gauges.Radial1Vertical radial1Vertical1;
     private eu.hansolo.steelseries.gauges.Radial4Lcd radial4Lcd1;
     // End of variables declaration//GEN-END:variables

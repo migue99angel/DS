@@ -25,6 +25,7 @@ public class Salpicadero implements Observer {
         @Override
         public void update(Observable o, Object temp) {
             this.estadoPalanca = (int) temp;
+            System.out.println("Llega");
         }
         
         // SI ESTAMOS EN MANTENER Y SE PISA EL FRENO PONER LA PALANCA EN PARAR
