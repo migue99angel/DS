@@ -315,9 +315,15 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             public void run(){
                 while(jToggleButton4.isSelected()) {
                     /* Cuando está seleccionado el botón de acelerar, solo podemos movernos a "Mantener" */
-                    jToggleButton3.setEnabled(false);
-                    jToggleButton5.setEnabled(true);
-                    jToggleButton6.setEnabled(false);
+                    if(jToggleButton4.isSelected()) {
+                        jToggleButton3.setEnabled(false);
+                        jToggleButton3.setSelected(false);
+                        jToggleButton4.setEnabled(false);
+                        jToggleButton5.setEnabled(true);
+                        jToggleButton5.setSelected(false);
+                        jToggleButton6.setEnabled(false);
+                        jToggleButton6.setSelected(false);
+                    }
                     
                     /* Cambiamos la palanca a estado "Acelerando" */
                     palanca.setEstado(1);
@@ -333,7 +339,6 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     /* Para el velocímetro */
                     double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
                     radial4Lcd1.setValue(redondeada);
-                    System.out.println(redondeada);
                     radial4Lcd1.repaint();
 
                     /* Para el cuentarrevoluciones */

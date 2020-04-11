@@ -15,7 +15,6 @@ public class GestorFiltros extends Thread {
             double rev_local = this.salpicadero.getRevoluciones();
             if(this.salpicadero.getEstadoPalanca() == 1)
             {
-                System.out.println("Buenas");
                 rev_local = this.cadena.ejecutar(rev_local, estado);
                 this.salpicadero.ejecutar(rev_local, estado);
             }
