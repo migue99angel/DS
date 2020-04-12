@@ -100,4 +100,6 @@ public class Salpicadero implements Observer {
         
         public double getCombustible(){return this.combustible;};
         
+        public void repostar() {this.combustible = 100;}
+        
 }
