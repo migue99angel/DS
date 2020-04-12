@@ -11,7 +11,6 @@ public class Salpicadero implements Observer {
 	private double revoluciones = 0;
         private double vMantenida = 0;
         private double revolucionesMantenida = 0;
-        long inicio = 0;
         long actual = 0;
         long anterior = 0;
         static final double radio = 0.15;
@@ -19,7 +18,7 @@ public class Salpicadero implements Observer {
         
         Salpicadero()
         {
-            this.inicio = System.currentTimeMillis();
+            this.actual = System.currentTimeMillis();
         }
         
         @Override
@@ -37,7 +36,7 @@ public class Salpicadero implements Observer {
                 this.actual = System.currentTimeMillis();
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
-                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+                this.distancia += this.vLineal * ((this.actual - this.anterior))/3600000;
             }
             //Si modo mantener
             if(estadoPalanca == 2)
