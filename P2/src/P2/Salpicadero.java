@@ -15,6 +15,7 @@ public class Salpicadero implements Observer {
         long anterior = 0;
         static final double radio = 0.15;
         private int estadoPalanca = -1;
+        private double combustible = 100;
         
         Salpicadero()
         {
@@ -37,6 +38,8 @@ public class Salpicadero implements Observer {
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
                 this.distancia += this.vLineal * ((this.actual - this.anterior))/3600000;
+                this.combustible -= this.revoluciones/1000000;
+                System.out.println("Quedan: "+this.combustible+" L");
             }
             //Si modo mantener
             if(estadoPalanca == 2)
@@ -45,12 +48,14 @@ public class Salpicadero implements Observer {
                 this.actual = System.currentTimeMillis();
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
+                this.combustible -= this.revoluciones/1000000; 
                 this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
                 if(vMantenida != this.vLineal)
                 {
                     this.vMantenida = this.vLineal;
                     this.revolucionesMantenida = this.revoluciones;
                 }
+                System.out.println("Quedan: "+this.combustible+" L");
 
             }
             //Si modo reiniciar
@@ -60,8 +65,17 @@ public class Salpicadero implements Observer {
                 this.actual = System.currentTimeMillis();
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
-                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;  
+                this.combustible -= this.revoluciones/1000000; 
+                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+                
+                if(vMantenida < vLineal)
+                {
+                    vLineal = vMantenida;
+                    this.revoluciones = this.revolucionesMantenida;
+                }
+                System.out.println("Quedan: "+this.combustible+" L");
             }
+            
             
             else {
                 this.actual = System.currentTimeMillis();
@@ -83,5 +97,7 @@ public class Salpicadero implements Observer {
         public int getEstadoPalanca(){return this.estadoPalanca;}
         
         public double getRevolucionesObjetivo(){return this.revolucionesMantenida;}
+        
+        public double getCombustible(){return this.combustible;};
         
 }

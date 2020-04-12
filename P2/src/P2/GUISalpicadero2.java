@@ -261,7 +261,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -311,9 +311,9 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             public void run(){
                 while(true) {
                     if(jToggleButton2.isSelected()) {
-                        palanca.setEstado(0);
+                        palanca.setEstado(1);
                     
-                        gestor.peticionFiltros(-1);
+                        gestor.peticionFiltros(1);
 
                         double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
                         displayCircular1.setValue(kilometros);
@@ -354,7 +354,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -409,7 +409,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -457,7 +457,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -504,7 +504,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -551,7 +551,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
-                        Thread.sleep(800);
+                        Thread.sleep(500);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
                     }
