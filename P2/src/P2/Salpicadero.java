@@ -31,7 +31,7 @@ public class Salpicadero implements Observer {
 	public void ejecutar(double revol, int EstadoMotor)
         {
             // Acelerando o frenando y modo manual
-            if((EstadoMotor == 0 || EstadoMotor == 1) && estadoPalanca == 1)
+            if(((EstadoMotor == 0 || EstadoMotor == 1) && estadoPalanca == 1) || estadoPalanca == 0 && EstadoMotor == -1)
             {
                 this.anterior = this.actual;
                 this.actual = System.currentTimeMillis();

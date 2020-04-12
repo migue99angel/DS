@@ -13,6 +13,13 @@ public class GestorFiltros extends Thread {
         
 	public void peticionFiltros(int estado) {
             double rev_local = this.salpicadero.getRevoluciones();
+            
+            if(this.salpicadero.getEstadoPalanca() == 0)
+            {
+                rev_local = this.cadena.ejecutar(rev_local, estado);
+                this.salpicadero.ejecutar(rev_local, estado);
+            }
+            
             if(this.salpicadero.getEstadoPalanca() == 1)
             {
                 rev_local = this.cadena.ejecutar(rev_local, estado);

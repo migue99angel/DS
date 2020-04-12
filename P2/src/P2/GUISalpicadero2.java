@@ -311,7 +311,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        /* Botón de frenar */
+        /* Botón de parar */
         new Thread(){
             public void run(){
                 while(jToggleButton3.isSelected()) {
@@ -336,7 +336,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     palanca.setEstado(0);
                     
                     /* Aplicamos la opción de frenar a los filtros necesarios */
-                    gestor.peticionFiltros(1);
+                    gestor.peticionFiltros(-1);
                     
                     /* Para el cuentakilómetros */
                     double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
