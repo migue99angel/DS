@@ -22,11 +22,21 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
      * Creates new form GUISalpicadero2
      */
     public GUISalpicadero2() {
+        this.almacenada = 0.0;
         this.gestor = new GestorFiltros();
         this.gestor.run();
         this.palanca = new Palanca();
         this.palanca.addObserver(this.gestor.salpicadero);
     }
+    
+    public void setAlmacenada(double d) {
+        this.almacenada = d;
+    }
+    
+    public double getAlmacenada() {
+        return this.almacenada;
+    }
+    
     /**
      * Initializes the applet GUISalpicadero2
      */
@@ -88,6 +98,8 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         jToggleButton5 = new javax.swing.JToggleButton();
         jToggleButton6 = new javax.swing.JToggleButton();
 
+        setMinimumSize(new java.awt.Dimension(1000, 1000));
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         radial4Lcd1.setLcdDecimals(1);
@@ -138,6 +150,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         getContentPane().add(displayMulti1, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 324, 215, -1));
 
         jToggleButton3.setText("PARAR");
+        jToggleButton3.setEnabled(false);
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton3ActionPerformed(evt);
@@ -146,6 +159,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         getContentPane().add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, -1, -1));
 
         jToggleButton4.setText("ACELERAR");
+        jToggleButton4.setEnabled(false);
         jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton4ActionPerformed(evt);
@@ -154,6 +168,8 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         getContentPane().add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
 
         jToggleButton5.setText("MANTENER");
+        jToggleButton5.setBorderPainted(false);
+        jToggleButton5.setEnabled(false);
         jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton5ActionPerformed(evt);
@@ -162,6 +178,8 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         getContentPane().add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, -1, -1));
 
         jToggleButton6.setText("REINICIAR");
+        jToggleButton6.setBorderPainted(false);
+        jToggleButton6.setEnabled(false);
         jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton6ActionPerformed(evt);
@@ -181,10 +199,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             
             /* Activamos el resto de botones */
             jToggleButton2.setEnabled(true);
-            jToggleButton3.setEnabled(true);
             jToggleButton4.setEnabled(true);
-            jToggleButton5.setEnabled(true);
-            jToggleButton6.setEnabled(true);
             
             /* Encendemos el led */
             radial4Lcd1.setLedBlinking(true);
@@ -236,26 +251,54 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        /* Pisar freno */
         new Thread(){
             public void run(){
                 while(jToggleButton1.isSelected()) {
-                    jToggleButton2.setText("SOLTAR FRENO");
+                    if(jToggleButton1.isSelected()) {
+                        jToggleButton2.setText("SOLTAR FRENO");
+                        
+                        jToggleButton3.setSelected(false);
+                        jToggleButton4.setSelected(false);
+                        jToggleButton5.setSelected(false);
+                        jToggleButton6.setSelected(false);
 
-                    gestor.peticionFiltros(1);
-                    /* Para el cuentakilómetros */
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    displayCircular1.setValue(kilometros);
-                    displayCircular1.repaint();
+                        gestor.peticionFiltros(1);
+                        /* Para el cuentakilómetros */
+                        double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometros);
+                        displayCircular1.repaint();
 
-                    /* Para el velocímetro */
-                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
-                    radial4Lcd1.setValue(redondeada);
-                    radial4Lcd1.repaint();
+                        /* Para el velocímetro */
+                        double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                        radial4Lcd1.setValue(redondeada);
+                        radial4Lcd1.repaint();
 
-                    /* Para el cuentarrevoluciones */
-                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
-                    displayMulti1.setValue(revoluciones);
-                    displayMulti1.repaint();
+                        /* Para el cuentarrevoluciones */
+                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                        displayMulti1.setValue(revoluciones);
+                        displayMulti1.repaint();
+                    }
+                    
+                    else {
+                        jToggleButton2.setText("PISAR FRENO");
+
+                        gestor.peticionFiltros(-1);
+                        /* Para el cuentakilómetros */
+                        double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometros);
+                        displayCircular1.repaint();
+
+                        /* Para el velocímetro */
+                        double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                        radial4Lcd1.setValue(redondeada);
+                        radial4Lcd1.repaint();
+
+                        /* Para el cuentarrevoluciones */
+                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                        displayMulti1.setValue(revoluciones);
+                        displayMulti1.repaint();
+                    }
                     
                     try {
                         Thread.sleep(800);
@@ -273,9 +316,21 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             public void run(){
                 while(jToggleButton3.isSelected()) {
                     /* Cuando está seleccionado el botón de frenar, solo podemos movernos a "Acelerar" */
-                    jToggleButton4.setEnabled(true);
-                    jToggleButton5.setEnabled(false);
-                    jToggleButton6.setEnabled(false);
+                    
+                    if(jToggleButton3.isSelected()) {
+                        jToggleButton3.setEnabled(false);
+                        jToggleButton4.setEnabled(true);
+                        jToggleButton5.setSelected(false);
+                        jToggleButton5.setEnabled(false);
+                        
+                        if(getAlmacenada() != 0.0) {
+                            jToggleButton6.setEnabled(true);
+                        }
+                        
+                        else {
+                            jToggleButton6.setEnabled(false);
+                        }                       
+                    }                    
                     
                     /* Cambiamos la palanca a estado "Frenando" */
                     palanca.setEstado(0);
@@ -290,6 +345,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
 
                     /* Para el velocímetro */
                     double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                    System.out.println(redondeada);
                     radial4Lcd1.setValue(redondeada);
                     radial4Lcd1.repaint();
 
@@ -363,9 +419,12 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             public void run(){
                 while(jToggleButton5.isSelected()) {
                     /* Cuando está seleccionado el botón de mantener, solo podemos movernos a "Acelerar" o "Frenar" */
-                    jToggleButton3.setEnabled(true);
-                    jToggleButton4.setEnabled(true);
-                    jToggleButton6.setEnabled(false);
+                    if(jToggleButton5.isSelected()) {
+                        jToggleButton3.setEnabled(true);
+                        jToggleButton4.setSelected(false);
+                        jToggleButton4.setEnabled(true);
+                        jToggleButton6.setEnabled(false);
+                    }
                     
                     /* Cambiamos la palanca a estado "Mantener" */
                     palanca.setEstado(2);
@@ -375,6 +434,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     
                     /* Para el cuentakilómetros */
                     double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    setAlmacenada(kilometros);
                     displayCircular1.setValue(kilometros);
                     displayCircular1.repaint();
 
@@ -457,4 +517,5 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
 
     public static GestorFiltros gestor;
     private static Palanca palanca;
+    private static double almacenada;
 }
