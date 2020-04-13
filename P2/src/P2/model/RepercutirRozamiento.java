@@ -1,4 +1,4 @@
-package P2;
+package P2.model;
 
 public class RepercutirRozamiento implements Filtro {
         RepercutirRozamiento(){}

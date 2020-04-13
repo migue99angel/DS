@@ -1,4 +1,4 @@
-package P2;
+package P2.controller;
 
 import java.util.Observable;
 
@@ -13,7 +13,7 @@ public class Palanca extends Observable {
      */
     private int estado;
     
-    Palanca() {
+    public Palanca() {
         /* Modo Manual por defecto */
         this.estado = 0;
     }

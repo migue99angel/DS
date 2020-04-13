@@ -1,4 +1,4 @@
-package P2;
+package P2.model;
 import java.util.ArrayList;
 
 public class CadenaFiltros {

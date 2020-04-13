@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package P2;
+package P2.view;
 
+import P2.model.GestorFiltros;
+import P2.controller.Palanca;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,10 +1,12 @@
-package P2;
+package P2.model;
+
+import P2.model.Salpicadero;
 
 public class GestorFiltros extends Thread {
 	public Salpicadero salpicadero;
 	public CadenaFiltros cadena;
         
-        GestorFiltros()
+        public GestorFiltros()
         {
             salpicadero = new Salpicadero();
             cadena = new CadenaFiltros();
