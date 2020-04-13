@@ -276,26 +276,52 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         
         new Thread(){
             public void run() {
-                while(!jToggleButton1.isSelected()) {
-                    palanca.setEstado(0);
-                    gestor.peticionFiltros(-1);
+                while(true) {
+                    if(!jToggleButton1.isSelected()) {
+                        palanca.setEstado(0);
+                        gestor.peticionFiltros(-1);
+
+                        /* Para el cuentakilómetros */
+                        double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometrosTotal);
+                        displayCircular1.repaint();
+                        gestor.salpicadero.setDistancia(0.0);
+                        displayCircular2.setValue(0.0);
+                        displayCircular2.repaint();
+
+                        /* Para el velocímetro */
+                        double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                        radial4Lcd1.setValue(redondeada);
+                        radial4Lcd1.repaint();
+
+                        /* Para el cuentarrevoluciones */
+                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                        displayMulti1.setValue(revoluciones);
+                        displayMulti1.repaint();
+                    }
                     
-                    /* Para el cuentakilómetros */
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    displayCircular1.setValue(kilometros);
-                    displayCircular1.repaint();
-                    displayCircular2.setValue(0.0);
-                    displayCircular2.repaint();
+                    else if(jToggleButton1.isSelected() && !jToggleButton4.isSelected() && !jToggleButton5.isSelected() && !jToggleButton6.isSelected()){
+                        palanca.setEstado(0);
+                        gestor.peticionFiltros(-1);
 
-                    /* Para el velocímetro */
-                    double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
-                    radial4Lcd1.setValue(redondeada);
-                    radial4Lcd1.repaint();
+                        double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometrosTotal);
+                        displayCircular1.repaint();
+                        displayCircular2.setValue(kilometrosParcial);
+                        displayCircular2.repaint();
 
-                    /* Para el cuentarrevoluciones */
-                    double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
-                    displayMulti1.setValue(revoluciones);
-                    displayMulti1.repaint();
+                        /* Para el velocímetro */
+                        double redondeada = Math.round(gestor.salpicadero.getVelocidad() * 100.0) / 100.0;
+                        radial4Lcd1.setValue(redondeada);
+                        radial4Lcd1.repaint();
+
+                        /* Para el cuentarrevoluciones */
+                        double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
+                        displayMulti1.setValue(revoluciones);
+                        displayMulti1.repaint();
+                    }
+                    
                     
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
@@ -360,10 +386,11 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                         radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
                         
                         /* Para los kilómetros */
-                        double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                        displayCircular1.setValue(kilometros);
+                        double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometrosTotal);
                         displayCircular1.repaint();
-                        displayCircular2.setValue(kilometros);
+                        displayCircular2.setValue(kilometrosParcial);
                         displayCircular2.repaint();
 
                         /* Para el velocímetro */
@@ -388,10 +415,11 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                         radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
                         
                         /* Para los kilómetros */
-                        double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                        displayCircular1.setValue(kilometros);
+                        double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                        double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                        displayCircular1.setValue(kilometrosTotal);
                         displayCircular1.repaint();
-                        displayCircular2.setValue(kilometros);
+                        displayCircular2.setValue(kilometrosParcial);
                         displayCircular2.repaint();
 
                         /* Para el velocímetro */
@@ -451,11 +479,12 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     /* Ponemos la cantidad de combustible */
                     radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
                     
-                    /* Para el cuentakilómetros */
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    displayCircular1.setValue(kilometros);
+                    /* Para los kilómetros */
+                    double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometrosTotal);
                     displayCircular1.repaint();
-                    displayCircular2.setValue(kilometros);
+                    displayCircular2.setValue(kilometrosParcial);
                     displayCircular2.repaint();
 
                     /* Para el velocímetro */
@@ -507,11 +536,12 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     /* Ponemos la cantidad de combustible */
                     radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
                     
-                    /* Para el cuentakilómetros */
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    displayCircular1.setValue(kilometros);
+                    /* Para los kilómetros */
+                    double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometrosTotal);
                     displayCircular1.repaint();
-                    displayCircular2.setValue(kilometros);
+                    displayCircular2.setValue(kilometrosParcial);
                     displayCircular2.repaint();
 
                     /* Para el velocímetro */
@@ -560,11 +590,12 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     /* Ponemos la cantidad de combustible */
                     radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
                     
-                    /* Para el cuentakilómetros */
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    displayCircular1.setValue(kilometros);
+                    /* Para los kilómetros */
+                    double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometrosTotal);
                     displayCircular1.repaint();
-                    displayCircular2.setValue(kilometros);
+                    displayCircular2.setValue(kilometrosParcial);
                     displayCircular2.repaint();
 
                     /* Para el velocímetro */
@@ -616,11 +647,12 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     /* Ponemos la cantidad de combustible */
                     radial1Vertical1.setValue(gestor.salpicadero.getCombustible());                   
                     
-                    /* Para el cuentakilómetros */
-                    double kilometros = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
-                    displayCircular1.setValue(kilometros);
+                    /* Para los kilómetros */
+                    double kilometrosParcial = Math.round(gestor.salpicadero.getDistancia() * 100.0) / 100.0;
+                    double kilometrosTotal = Math.round(gestor.salpicadero.getDistanciaTotal() * 100.0) / 100.0;
+                    displayCircular1.setValue(kilometrosTotal);
                     displayCircular1.repaint();
-                    displayCircular2.setValue(kilometros);
+                    displayCircular2.setValue(kilometrosParcial);
                     displayCircular2.repaint();
 
                     /* Para el velocímetro */

@@ -8,6 +8,7 @@ import java.util.Observer;
 public class Salpicadero implements Observer {
 	private double vLineal = 0;
 	private double distancia = 0;
+        private double distanciaTotal = 0;
 	private double revoluciones = 0;
         private double vMantenida = 0;
         private double revolucionesMantenida = 0;
@@ -38,6 +39,7 @@ public class Salpicadero implements Observer {
                 this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
                 this.revoluciones = revol;
                 this.distancia += this.vLineal * ((this.actual - this.anterior))/3600000;
+                this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
                 this.combustible -= this.revoluciones/1000000;
             }
             
@@ -50,6 +52,8 @@ public class Salpicadero implements Observer {
                 this.revoluciones = revol;
                 this.combustible -= this.revoluciones/1000000; 
                 this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+                this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
+                
                 if(vMantenida != this.vLineal)
                 {
                     this.vMantenida = this.vLineal;
@@ -66,6 +70,7 @@ public class Salpicadero implements Observer {
                 this.revoluciones = revol;
                 this.combustible -= this.revoluciones/1000000; 
                 this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
+                this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
                 
                 if(vMantenida < vLineal)
                 {
@@ -82,6 +87,8 @@ public class Salpicadero implements Observer {
         public double getVelocidad(){return this.vLineal;}
         
         public double getDistancia(){return this.distancia;}
+        
+        public double getDistanciaTotal(){return this.distanciaTotal;}
         
         public double getRevoluciones(){return this.revoluciones;}
         
