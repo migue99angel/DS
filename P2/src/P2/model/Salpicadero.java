@@ -17,10 +17,12 @@ public class Salpicadero implements Observer {
         static final double radio = 0.15;
         private int estadoPalanca = -1;
         private double combustible = 100;
+        private MonitorConsumo monitor;
         
         Salpicadero()
         {
             this.actual = System.currentTimeMillis();
+            this.monitor = new MonitorConsumo();
         }
         
         @Override
@@ -41,6 +43,10 @@ public class Salpicadero implements Observer {
                 this.distancia += this.vLineal * ((this.actual - this.anterior))/3600000;
                 this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
                 this.combustible -= this.revoluciones/1000000;
+                
+                double vueltas = (((this.actual - this.anterior)/1000.0)*this.revoluciones)/60.0;
+                this.monitor.consumir(vueltas);
+                System.out.println(monitor.getGeneral());
             
             
             //Si modo mantener
