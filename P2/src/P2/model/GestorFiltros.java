@@ -1,6 +1,6 @@
 package P2.model;
 
-import P2.model.Salpicadero;
+
 
 public class GestorFiltros extends Thread {
 	public Salpicadero salpicadero;

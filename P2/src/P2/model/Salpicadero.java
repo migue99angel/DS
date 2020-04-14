@@ -32,7 +32,7 @@ public class Salpicadero implements Observer {
 	public void ejecutar(double revol, int EstadoMotor)
         {
             // Acelerando o frenando y modo manual
-            if(((EstadoMotor == 0 || EstadoMotor == 1) && estadoPalanca == 1) || estadoPalanca == 0 && EstadoMotor == -1)
+            if(((EstadoMotor == 0 || EstadoMotor == 1) && estadoPalanca == 1) || (estadoPalanca == 0 && EstadoMotor == -1) || estadoPalanca == 2 || estadoPalanca == 3 )
             {
                 this.anterior = this.actual;
                 this.actual = System.currentTimeMillis();
@@ -41,44 +41,24 @@ public class Salpicadero implements Observer {
                 this.distancia += this.vLineal * ((this.actual - this.anterior))/3600000;
                 this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
                 this.combustible -= this.revoluciones/1000000;
-            }
+            
             
             //Si modo mantener
-            if(estadoPalanca == 2)
-            {
-                this.anterior = this.actual;
-                this.actual = System.currentTimeMillis();
-                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
-                this.revoluciones = revol;
-                this.combustible -= this.revoluciones/1000000; 
-                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
-                this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
-                
-                if(vMantenida != this.vLineal)
+                if(estadoPalanca == 2 && vMantenida != this.vLineal)
                 {
                     this.vMantenida = this.vLineal;
                     this.revolucionesMantenida = this.revoluciones;
                 }
-            }
+            
             
             //Si modo reiniciar
-            if(estadoPalanca == 3)
-            {
-                this.anterior = this.actual;
-                this.actual = System.currentTimeMillis();
-                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
-                this.revoluciones = revol;
-                this.combustible -= this.revoluciones/1000000; 
-                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
-                this.distanciaTotal += this.vLineal * ((this.actual - this.anterior))/3600000;
-                
-                if(vMantenida < vLineal)
+                if(estadoPalanca == 3 && vMantenida < vLineal)
                 {
                     vLineal = vMantenida;
                     this.revoluciones = this.revolucionesMantenida;
                 }
-            }            
-            
+
+            }
             else {
                 this.actual = System.currentTimeMillis();
             }
