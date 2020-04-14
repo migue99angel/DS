@@ -385,33 +385,25 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                     if(gestor.salpicadero.getMonitor().getAceite() >= gestor.salpicadero.getMonitor().notificacionAceite){
                         /* Ponemos la notificación en el cuadro */
                         jTextPane1.setText("¡Se necesita cambiar el aceite! Por favor, pare el vehículo");
-
-                        /* Activamos el botón cuando la velocidad sea 0.0 */
-                        if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected()) {
-                            jButton2.setEnabled(true);
-                        }
+                    }
+                    
+                    /* Activamos el botón cuando la velocidad sea 0.0 */
+                    if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected() && gestor.salpicadero.getMonitor().getAceite() > 0.0) {
+                        jButton2.setEnabled(true);
+                        jButton3.setEnabled(true);
+                        jButton4.setEnabled(true);
                     }
 
                     /* Si necesitamos cambiar los frenos */
                     if(gestor.salpicadero.getMonitor().getFrenos() >= gestor.salpicadero.getMonitor().notificacionFrenos) {
                         /* Ponemos la notificación en el cuadro */
                         jTextPane1.setText("¡Se necesita cambiar los frenos! Por favor, pare el vehículo");
-
-                        /* Activamos el botón cuando la velocidad sea 0.0 */
-                        if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected()) {
-                            jButton3.setEnabled(true);
-                        }
                     }
 
                     /* Si necesitamos revisión general */
                     if(gestor.salpicadero.getMonitor().getGeneral() >= gestor.salpicadero.getMonitor().notificacionRevisionGeneral) {
                         /* Ponemos la notificación en el cuadro */
                         jTextPane1.setText("¡Se necesita hacer una revisión general! Por favor, pare el vehículo");
-
-                        /* Activamos el botón cuando la velocidad sea 0.0 */
-                        if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected()) {
-                            jButton4.setEnabled(true);
-                        }
                     }
                    
                     /* Pequeña espera para que tengan margen de actualizarse */
