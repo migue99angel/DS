@@ -45,19 +45,16 @@ public class Salpicadero implements Observer {
                 this.combustible -= this.revoluciones/1000000;
                 
                 double vueltas = (((this.actual - this.anterior)/1000.0)*this.revoluciones)/60.0;
-                this.monitor.consumir(vueltas);
-                System.out.println(monitor.getGeneral());
+                this.monitor.consumir(vueltas);           
             
-            
-            //Si modo mantener
+                //Si modo mantener
                 if(estadoPalanca == 2 && vMantenida != this.vLineal)
                 {
                     this.vMantenida = this.vLineal;
                     this.revolucionesMantenida = this.revoluciones;
-                }
+                }           
             
-            
-            //Si modo reiniciar
+                //Si modo reiniciar
                 if(estadoPalanca == 3 && vMantenida < vLineal)
                 {
                     vLineal = vMantenida;
@@ -91,5 +88,7 @@ public class Salpicadero implements Observer {
         public double getCombustible(){return this.combustible;};
         
         public void repostar() {this.combustible = 100;}
+        
+        public MonitorConsumo getMonitor() {return this.monitor;}
         
 }

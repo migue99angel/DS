@@ -66,7 +66,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         try {
             java.awt.EventQueue.invokeAndWait(new Runnable() {
                 public void run() { 
-                    resize(900, 600);
+                    resize(900, 665);
                     initComponents();
                 }
             });
@@ -101,6 +101,13 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         displayCircular2 = new eu.hansolo.steelseries.gauges.DisplayCircular();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
 
         setMinimumSize(new java.awt.Dimension(1000, 1000));
         setPreferredSize(new java.awt.Dimension(1000, 1000));
@@ -154,7 +161,7 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        getContentPane().add(displayMulti1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, 215, -1));
+        getContentPane().add(displayMulti1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 215, -1));
 
         jToggleButton3.setText("PARAR");
         jToggleButton3.setEnabled(false);
@@ -223,56 +230,101 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
 
         displayCircular2.setUnitString("km");
         getContentPane().add(displayCircular2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 150, 150));
+
+        jButton1.setText("REPOSTAR");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, -1, -1));
+
+        jLabel6.setText("Notificaciones");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 490, -1, -1));
+
+        jButton2.setText("ACEITE");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, -1, -1));
+
+        jButton3.setText("FRENOS");
+        jButton3.setEnabled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, -1, -1));
+
+        jButton4.setText("REVISIÓN");
+        jButton4.setEnabled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 620, -1, -1));
+
+        jTextPane1.setDisabledTextColor(new java.awt.Color(255, 0, 0));
+        jTextPane1.setEnabled(false);
+        jScrollPane3.setViewportView(jTextPane1);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 290, 100));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        /* Si está seleccionado, podemos seleccionar el resto */
-        if(jToggleButton1.isSelected()) {
-            if(gestor.getState() == Thread.State.RUNNABLE) {
-                ((Thread)gestor).start();
-            }
-            
-            /* Inicializamos la velocidad almacenada a 0 */
-            setAlmacenada(0.0);
-            jTextField2.setText(String.valueOf(this.almacenada));
-            
-            jToggleButton1.setText("APAGAR");
-            
-            /* Cambiamos el dibujo de la palanca */
-            jLabel3.setLocation(640, 370);
-            
-            /* Ponemos la cantidad de combustible */
-            radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
-            
-            /* Activamos el resto de botones */
-            jToggleButton2.setEnabled(true);
-            jToggleButton4.setEnabled(true);
-            
-            /* Encendemos el led */
-            radial4Lcd1.setLedBlinking(true);
-        }
-        
-        /* Si no está seleccionado, decrementamos la velocidad según el rozamiento y el resto de botones dejan de ser seleccionables */
-        else {
-            jToggleButton1.setText("ARRANCAR");
-            
-            jToggleButton2.setEnabled(false);
-            jToggleButton2.setSelected(false);
-            jToggleButton3.setEnabled(false);
-            jToggleButton3.setSelected(false);
-            jToggleButton4.setEnabled(false);
-            jToggleButton4.setSelected(false);
-            jToggleButton5.setEnabled(false);
-            jToggleButton5.setSelected(false);
-            jToggleButton6.setEnabled(false);
-            jToggleButton6.setSelected(false);
-            
-            /* Apagamos el led */
-            radial4Lcd1.setLedBlinking(false);
-        }
-        
         new Thread(){
             public void run() {
+                /* Si está seleccionado, podemos seleccionar el resto */
+                if(jToggleButton1.isSelected()) {
+                    if(gestor.getState() == Thread.State.RUNNABLE) {
+                        ((Thread)gestor).start();
+                    }
+
+                    /* Inicializamos la velocidad almacenada a 0 */
+                    setAlmacenada(0.0);
+                    jTextField2.setText(String.valueOf(almacenada));
+
+                    jToggleButton1.setText("APAGAR");
+
+                    /* Cambiamos el dibujo de la palanca */
+                    jLabel3.setLocation(640, 370);
+
+                    /* Ponemos la cantidad de combustible */
+                    radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
+
+                    /* Activamos el resto de botones */
+                    jToggleButton2.setEnabled(true);
+                    jToggleButton4.setEnabled(true);
+
+                    /* Encendemos el led */
+                    radial4Lcd1.setLedBlinking(true);
+                }
+
+                /* Si no está seleccionado, decrementamos la velocidad según el rozamiento y el resto de botones dejan de ser seleccionables */
+                else {
+                    jToggleButton1.setText("ARRANCAR");
+
+                    jToggleButton2.setEnabled(false);
+                    jToggleButton2.setSelected(false);
+                    jToggleButton3.setEnabled(false);
+                    jToggleButton3.setSelected(false);
+                    jToggleButton4.setEnabled(false);
+                    jToggleButton4.setSelected(false);
+                    jToggleButton5.setEnabled(false);
+                    jToggleButton5.setSelected(false);
+                    jToggleButton6.setEnabled(false);
+                    jToggleButton6.setSelected(false);
+
+                    /* Apagamos el led */
+                    radial4Lcd1.setLedBlinking(false);
+                }
+                
                 while(true) {
                     if(!jToggleButton1.isSelected()) {
                         palanca.setEstado(0);
@@ -295,6 +347,13 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                         double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
                         displayMulti1.setValue(revoluciones);
                         displayMulti1.repaint();
+                        
+                        /* Gestión  del botón de repostar */
+                        double gasolina = Math.round(gestor.salpicadero.getCombustible() * 100.0) / 100.0;
+                        
+                        if(gasolina < 100.0 && redondeada == 0.0) {
+                            jButton1.setEnabled(true);
+                        }
                     }
                     
                     else if(jToggleButton1.isSelected() && !jToggleButton4.isSelected() && !jToggleButton5.isSelected() && !jToggleButton6.isSelected()){
@@ -317,9 +376,44 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
                         double revoluciones = Math.round(gestor.salpicadero.getRevoluciones() * 100.0) / 100.0;
                         displayMulti1.setValue(revoluciones);
                         displayMulti1.repaint();
+                        
+                        /* Gestión del botón de repostar */
+                        jButton1.setEnabled(false);
+                    }    
+                    
+                    /* Si necesitamos cambiar el aceite */
+                    if(gestor.salpicadero.getMonitor().getAceite() >= gestor.salpicadero.getMonitor().notificacionAceite){
+                        /* Ponemos la notificación en el cuadro */
+                        jTextPane1.setText("¡Se necesita cambiar el aceite! Por favor, pare el vehículo");
+
+                        /* Activamos el botón cuando la velocidad sea 0.0 */
+                        if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected()) {
+                            jButton2.setEnabled(true);
+                        }
                     }
-                    
-                    
+
+                    /* Si necesitamos cambiar los frenos */
+                    if(gestor.salpicadero.getMonitor().getFrenos() >= gestor.salpicadero.getMonitor().notificacionFrenos) {
+                        /* Ponemos la notificación en el cuadro */
+                        jTextPane1.setText("¡Se necesita cambiar los frenos! Por favor, pare el vehículo");
+
+                        /* Activamos el botón cuando la velocidad sea 0.0 */
+                        if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected()) {
+                            jButton3.setEnabled(true);
+                        }
+                    }
+
+                    /* Si necesitamos revisión general */
+                    if(gestor.salpicadero.getMonitor().getGeneral() >= gestor.salpicadero.getMonitor().notificacionRevisionGeneral) {
+                        /* Ponemos la notificación en el cuadro */
+                        jTextPane1.setText("¡Se necesita hacer una revisión general! Por favor, pare el vehículo");
+
+                        /* Activamos el botón cuando la velocidad sea 0.0 */
+                        if(gestor.salpicadero.getVelocidad() == 0.0 && !jToggleButton1.isSelected()) {
+                            jButton4.setEnabled(true);
+                        }
+                    }
+                   
                     /* Pequeña espera para que tengan margen de actualizarse */
                     try {
                         Thread.sleep(500);
@@ -673,17 +767,84 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
         }.start();
     }//GEN-LAST:event_jToggleButton6ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        gestor.salpicadero.repostar();
+        radial1Vertical1.setValue(gestor.salpicadero.getCombustible());
+        
+        /* Esperamos a que se recargue el aceite */
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        jTextPane1.setText("¡Listo! Depósito lleno. Puede continuar.");
+        jButton1.setEnabled(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /* Esperamos a que se recargue el aceite */
+        gestor.salpicadero.getMonitor().cambioAceite();
+
+        /* Esperamos a que se recargue el aceite */
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        jTextPane1.setText("¡Listo! Aceite cambiado. Puede continuar.");
+        jButton2.setEnabled(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /* Esperamos a que se cambien los frenos */
+        gestor.salpicadero.getMonitor().cambioFrenos();
+
+        /* Esperamos a que se recargue el aceite */
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        jTextPane1.setText("¡Listo! Frenos cambiados. Puede continuar.");
+        jButton3.setEnabled(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        /* Esperamos a que se revise el coche */
+        gestor.salpicadero.getMonitor().revisionGeneral();
+
+        /* Esperamos a que se recargue el aceite */
+        try {
+            Thread.sleep(2500);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUISalpicadero2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        jTextPane1.setText("¡Listo! Revisión completada. Puede continuar.");
+        jButton4.setEnabled(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private eu.hansolo.steelseries.gauges.DisplayCircular displayCircular1;
     private eu.hansolo.steelseries.gauges.DisplayCircular displayCircular2;
     private eu.hansolo.steelseries.gauges.DisplayMulti displayMulti1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
@@ -697,4 +858,5 @@ public class GUISalpicadero2 extends javax.swing.JApplet {
     public static GestorFiltros gestor;
     private static Palanca palanca;
     private static double almacenada;
+    private static boolean notificando = false;
 }
